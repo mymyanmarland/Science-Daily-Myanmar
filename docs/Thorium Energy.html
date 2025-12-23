@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thorium Energy | Science Daily Myanmar </title>
+    
+    <meta property="og:title" content="Thorium Energy">
+    <meta property="og:description" content="ကမ္ဘာ့ပထမဆုံး Thorium နျူကလီးယားစွမ်းအင် လောင်စာအဖြစ်ပြောင်းလဲမှု တရုတ်အောင်မြင်">
+    <meta property="og:image" content="https://sdmm.site/images/default-cover.jpg">
+    <meta property="og:url" content="https://sdmm.site/Thorium Energy.html">
+    <meta property="og:type" content="article">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Noto+Sans+Myanmar:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/syntax.css">
+
+    <style>
+        :root {
+            --font-head: 'Space Grotesk', sans-serif;
+            --font-body: 'Noto Sans Myanmar', sans-serif;
+            --primary: #00f2ff;
+            --bg-dark: #050505;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-dark);
+            color: #e0e0e0;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Ambient Glow Background */
+        .ambient-glow {
+            position: fixed; width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(0,242,255,0.1) 0%, rgba(0,0,0,0) 70%);
+            top: -100px; left: -100px; z-index: -1; filter: blur(80px);
+            animation: float 10s infinite alternate;
+        }
+        @keyframes float { 0% { transform: translate(0, 0); } 100% { transform: translate(50px, 50px); } }
+
+        h1, h2, h3, h4, .brand-font { font-family: var(--font-head); letter-spacing: -0.5px; }
+        .glass-card { background: var(--glass-bg); border: 1px solid var(--border); border-radius: 16px; backdrop-filter: blur(10px); }
+        .content img { max-width: 100%; height: auto; border-radius: 12px; margin: 20px 0; border: 1px solid var(--border); }
+        .progress-container { position: fixed; top: 0; left: 0; width: 100%; height: 3px; z-index: 9999; background: transparent; }
+        .progress-bar { height: 3px; background: var(--primary); width: 0%; box-shadow: 0 0 10px var(--primary); }
+
+        /* Back to Top */
+        #btn-back-to-top {
+            position: fixed; bottom: 30px; right: 30px; display: none; z-index: 1000;
+            background: rgba(0, 242, 255, 0.1); border: 1px solid var(--primary); color: var(--primary);
+            width: 45px; height: 45px; border-radius: 50%; transition: 0.3s;
+        }
+        #btn-back-to-top:hover { background: var(--primary); color: #000; transform: translateY(-5px); }
+
+        /* Search Modal */
+        .search-modal { display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); backdrop-filter: blur(5px); }
+        .search-content { background-color: #1a1a1a; margin: 10% auto; padding: 20px; border: 1px solid var(--primary); width: 80%; max-width: 600px; border-radius: 15px; box-shadow: 0 0 30px rgba(0, 242, 255, 0.2); }
+        #searchInput { width: 100%; padding: 15px; font-size: 1.2rem; background: #000; border: 1px solid #333; color: white; border-radius: 8px; outline: none; }
+        #searchInput:focus { border-color: var(--primary); }
+        #searchResults { max-height: 300px; overflow-y: auto; margin-top: 15px; }
+        .search-item { display: block; padding: 10px; border-bottom: 1px solid #333; color: #ccc; text-decoration: none; transition: 0.2s; }
+        .search-item:hover { background: rgba(0, 242, 255, 0.1); color: var(--primary); padding-left: 15px; }
+
+        .code-wrapper { position: relative; margin: 2rem 0; }
+        .codehilite { border-radius: 10px; padding: 1.5rem; background: #111 !important; border: 1px solid #333; overflow-x: auto; }
+        .btn-copy { position: absolute; top: 10px; right: 10px; background: rgba(255,255,255,0.1); border: none; color: #ccc; font-size: 0.75rem; padding: 4px 10px; border-radius: 4px; cursor: pointer; }
+        .navbar { background: rgba(5,5,5,0.8); backdrop-filter: blur(15px); border-bottom: 1px solid var(--border); }
+    </style>
+</head>
+<body>
+
+    <div class="ambient-glow"></div>
+    <div class="progress-container"><div class="progress-bar" id="myBar"></div></div>
+
+    <div id="mySearchModal" class="search-modal">
+        <div class="search-content">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h5 class="text-white brand-font">SEARCH</h5>
+                <span class="text-secondary" style="cursor:pointer; font-size: 1.5rem;" onclick="closeSearch()">&times;</span>
+            </div>
+            <input type="text" id="searchInput" placeholder="Type to search..." onkeyup="searchFunction()">
+            <div id="searchResults"></div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg fixed-top py-3">
+        <div class="container">
+            <a class="navbar-brand fs-4 fw-bold text-white brand-font" href="index.html">
+                <i class="fa-solid fa-bolt text-info me-2"></i>Science<span style="color:var(--primary)">Daily</span>
+            </a>
+            <button class="btn btn-outline-secondary rounded-pill ms-auto px-3" onclick="openSearch()">
+                <i class="fas fa-search me-2"></i> Search
+            </button>
+        </div>
+    </nav>
+
+    <div class="container" style="margin-top: 100px; min-height: 80vh; padding-bottom: 100px;">
+        
+
+<nav aria-label="breadcrumb" class="mb-4" data-aos="fade-right">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="index.html" class="text-secondary text-decoration-none">Home</a></li>
+    <li class="breadcrumb-item active text-white" aria-current="page">Article</li>
+  </ol>
+</nav>
+
+<div class="row justify-content-center">
+    <div class="col-lg-9">
+        <article data-aos="fade-up">
+            <header class="mb-5 pb-4 border-bottom border-secondary border-opacity-50">
+                <div class="d-flex gap-3 text-secondary mb-3 small fw-bold font-monospace">
+                    <span><i class="far fa-calendar me-1"></i> 2025-12-24</span>
+                    <span><i class="far fa-clock me-1"></i> 1 min read</span>
+                </div>
+                <h1 class="display-4 fw-bold text-white mb-3 brand-font">Thorium Energy</h1>
+                <p class="lead text-info opacity-75">ကမ္ဘာ့ပထမဆုံး Thorium နျူကလီးယားစွမ်းအင် လောင်စာအဖြစ်ပြောင်းလဲမှု တရုတ်အောင်မြင်</p>
+            </header>
+
+            <div class="content fs-5 lh-lg text-light" style="text-align: justify; color: #d1d5db;">
+                <p><img alt="ပုံအကြောင်းစာသား" src="images/Thorium Energy.jpg" />
+Image: images/Thorium Energy.jpg </p>
+<p>ကမ္ဘာ့ပထမဆုံး Thorium နျူကလီးယားစွမ်းအင် လောင်စာအဖြစ်ပြောင်းလဲမှု တရုတ်အောင်မြင်</p>
+<p>တရုတ်နိုင်ငံမှာရှိတဲ့ TMSR-LF1 လို့ခေါ်တဲ့ စမ်းသပ် Thorium ဓာတ်ပေါင်းဖိုကနေ Thorium နဲ့ Uranium လောင်စာကို အောင်မြင်စွာ စတင်လည်ပတ်နိုင်ခဲ့ပါပြီ ။ ဒါဟာ ကမ္ဘာပေါ်မှာ ပထမဆုံးအကြိမ် Thorium ကို Molten Salt Reactor (ဆားရည်ပူ ဓာတ်ပေါင်းဖို) ထဲထည့်ပြီး လက်တွေ့စမ်းသပ်မှု အောင်မြင်ပြီး ဒေတာတွေ ရယူနိုင်ခဲ့တာ ဖြစ်ပါတယ် ။</p>
+<p>ပုံမှန် နျူကလီးယား ဓာတ်ပေါင်းဖိုတွေက အစိုင်အခဲ လောင်စာတောင့်တွေ သုံးကြပြီး လောင်စာဖြည့်ချင်ရင် စက်ကို ရပ်ထားရပါတယ် ။ ဒါပေမဲ့ ဒီ Thorium ဓာတ်ပေါင်းဖိုကတော့ ထူးခြားပါတယ်။ သူက လောင်စာကို အရည်ပျော်နေတဲ့ ဆားရည် (Molten Salt) ထဲမှာ ပျော်ဝင်စေပြီး လှည့်ပတ်မောင်းနှင်တာပါ ။ ဒါကြောင့် စက်ရပ်စရာမလိုဘဲ လောင်စာဖြည့်နိုင်သလို အပူကိုလည်း ဆက်တိုက်ထုတ်ပေးနိုင်ပါတယ် ။</p>
+<p>၂၀၂၅ ခုနှစ်၊ နိုဝင်ဘာလ ၁ ရက်နေ့မှာ Shanghai Institute of Applied Physics (SINAP) က ဒီစမ်းသပ်မှုအောင်မြင်ကြောင်း ကြေညာခဲ့ပါတယ် ။ ဒီဓာတ်ပေါင်းဖိုမှာ ပါဝင်တဲ့ နည်းပညာအချက်အလက်တွေကတော့ -</p>
+<p>Thorium ပမာဏ: ၅၀ ကီလိုဂရမ်လောက်ကို အသုံးပြုထားပါတယ် ။</p>
+<p>လောင်စာအချိုးအစား: Uranium-235 ပါဝင်မှုကို ၂၀ ရာခိုင်နှုန်းအောက် လျှော့ချထားတဲ့ လောင်စာကို သုံးထားတာ ဖြစ်ပါတယ် ။</p>
+<p>အအေးခံစနစ်: Lithium-beryllium fluoride (FLiBe) လို့ခေါ်တဲ့ အရည်ပျော်ဆားကို အသုံးပြုထားပါတယ် ။</p>
+<p>ဒါဟာ စာရွက်ပေါ်က သီအိုရီမဟုတ်တော့ပါဘူး။ ၂၀၂၃ ခုနှစ် ဇွန်လမှာ လည်ပတ်ခွင့်လိုင်စင်ရခဲ့ပြီး၊ အောက်တိုဘာလကတည်းက စက်စတင်လည်ပတ် (First Criticality) ခဲ့တာပါ ။ အခု ၂၀၂၅ မှာတော့ Thorium လောင်စာအသစ်ကို လက်တွေ့ အောင်မြင်စွာ ပြောင်းလဲအသုံးပြုနိုင်ခဲ့တာ ဖြစ်ပါတယ် ။ လက်ရှိမှာ ဒါဟာ ကမ္ဘာပေါ်မှာ Thorium လောင်စာကို အောင်မြင်စွာ ထည့်သွင်းမောင်းနှင်နေတဲ့ တစ်ခုတည်းသော Molten Salt Reactor ဖြစ်ပါတယ် ။</p>
+<p>ဒီနည်းပညာရဲ့ အဓိက အားသာချက်ကတော့ နျူကလီးယား စွန့်ပစ်ပစ္စည်း (Radioactive Waste) ထွက်ရှိမှုကို သိသိသာသာ လျှော့ချပေးနိုင်တာပါပဲ ။ လောင်စာကိုလည်း ပိုမိုထိရောက်စွာ အသုံးပြုနိုင်ပါတယ် ။ တရုတ်နိုင်ငံအနေနဲ့ နောက်တစ်ဆင့်အဖြစ် ၂၀၃၅ ခုနှစ်မှာ ၁၀၀ မဂ္ဂါဝပ် (MWt) ထွက်ရှိမယ့် ဓာတ်ပေါင်းဖိုကြီးတွေ တည်ဆောက်ပြီး လက်တွေ့အသုံးချဖို့ ရည်မှန်းထားပါတယ် ။</p>
+<p>Thorium (သိုရီယမ်) ဆိုတာ ဘာလဲ? </p>
+<p>Thorium ဆိုတာ သဘာဝကျောက်လွှာတွေနဲ့ သဲတွေထဲမှာ တွေ့ရတတ်တဲ့ ငွေရောင်သတ္တုတစ်မျိုး ဖြစ်ပါတယ်။ သူ့ရဲ့ ထူးခြားချက်ကတော့ -</p>
+<p>လောင်စာအဖြစ် ပြောင်းလဲနိုင်စွမ်း: Thorium ဟာ သူ့ချည်းသက်သက်ဆိုရင် နျူကလီးယားလောင်စာအဖြစ် ချက်ချင်းမသုံးနိုင်ပါဘူး။ ဒါပေမဲ့ ဓာတ်ပေါင်းဖိုထဲမှာ တခြားလောင်စာ (ဥပမာ - Uranium) နဲ့ တွဲပြီး အပူပေးလိုက်ရင်တော့ စွမ်းအင်အများကြီးထွက်တဲ့ လောင်စာကောင်း (Uranium-233) အဖြစ် ပြောင်းလဲသွားပါတယ် ။</p>
+<p>ပိုပြီး ပေါများတယ်: ကမ္ဘာမြေပေါ်မှာ သမရိုးကျ Uranium သတ္တုထက် Thorium က ပိုပြီး ပေါများစွာ ရှိနေပါတယ်။</p>
+<p>စွန့်ပစ်ပစ္စည်း နည်းတယ်: Thorium ကိုသုံးတာက ရေဒီယိုသတ္တိကြွ စွန့်ပစ်ပစ္စည်း ထွက်ရှိမှုကို သိသိသာသာ လျှော့ချပေးနိုင်တဲ့ အားသာချက်ရှိပါတယ် ။</p>
+<p>(ရိုးရိုးရှင်းရှင်း ပြောရရင်တော့ Thorium ဆိုတာ "အသင့်စား" လောင်စာမဟုတ်ဘဲ၊ ချက်လိုက်မှ စားလို့ကောင်းတဲ့ "ဟင်းရွက်ကြမ်း" လိုမျိုး စွမ်းအင်အရင်းအမြစ်တစ်ခုပါပဲ။)</p>
+<p>Source: World Nuclear News</p>
+<p>Disclaimer: This post is for educational purposes only. (ဤပို့စ်သည် နည်းပညာဗဟုသုတ မျှဝေခြင်းသက်သက်သာ ဖြစ်ပြီး၊ နျူကလီးယားစွမ်းအင်ဆိုင်ရာ နည်းပညာအသစ်များကို လေ့လာနိုင်ရန် ရည်ရွယ်ပါသည်။)</p>
+<h1>ThoriumEnergy #NuclearTechnology #CleanEnergy #ScienceNews #MyanmarTech #Innovation #FutureEnergy</h1>
+            </div>
+
+            <div class="mt-5 pt-4 d-flex justify-content-between border-top border-secondary border-opacity-50">
+                <a href="index.html" class="btn btn-outline-light rounded-pill px-4">
+                    <i class="fas fa-arrow-left me-2"></i> Back to Home
+                </a>
+            </div>
+        </article>
+    </div>
+</div>
+
+    </div>
+
+    <button type="button" id="btn-back-to-top"><i class="fas fa-arrow-up"></i></button>
+
+    <footer class="text-center py-5 border-top border-dark mt-5">
+        <small class="text-secondary">© 2025 TechBlog. Generated with Python.</small>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({once: true});
+
+        window.onscroll = function() {
+            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
+            document.getElementById("btn-back-to-top").style.display = (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) ? "block" : "none";
+        };
+        document.getElementById("btn-back-to-top").addEventListener("click", function(){ window.scrollTo({top: 0, behavior: 'smooth'}); });
+
+        document.querySelectorAll('.codehilite').forEach((block) => {
+            let wrapper = document.createElement('div'); wrapper.className = 'code-wrapper'; block.parentNode.insertBefore(wrapper, block); wrapper.appendChild(block);
+            let button = document.createElement('button'); button.className = 'btn-copy'; button.innerHTML = '<i class="far fa-copy"></i> Copy'; wrapper.appendChild(button);
+            button.addEventListener('click', async () => {
+                await navigator.clipboard.writeText(block.querySelector('pre').innerText);
+                button.innerHTML = '<i class="fas fa-check"></i>'; setTimeout(() => { button.innerHTML = '<i class="far fa-copy"></i> Copy'; }, 2000);
+            });
+        });
+
+        // Search Logic
+        let postsData = [];
+        fetch('search.json').then(response => response.json()).then(data => { postsData = data; }).catch(error => console.log(error));
+        function openSearch() { document.getElementById("mySearchModal").style.display = "block"; document.getElementById("searchInput").focus(); }
+        function closeSearch() { document.getElementById("mySearchModal").style.display = "none"; }
+        window.onclick = function(event) { if (event.target == document.getElementById("mySearchModal")) { closeSearch(); } }
+        function searchFunction() {
+            let input = document.getElementById("searchInput").value.toLowerCase();
+            let resultsDiv = document.getElementById("searchResults"); resultsDiv.innerHTML = "";
+            if (input.length < 1) return;
+            let filteredPosts = postsData.filter(post => post.title.toLowerCase().includes(input) || post.summary.toLowerCase().includes(input));
+            if (filteredPosts.length === 0) { resultsDiv.innerHTML = "<p class='text-secondary mt-3'>No results found.</p>"; } 
+            else { filteredPosts.forEach(post => { let a = document.createElement("a"); a.href = post.url; a.className = "search-item"; a.innerHTML = `<div class='fw-bold'>${post.title}</div><small class='text-muted'>${post.summary.substring(0, 50)}...</small>`; resultsDiv.appendChild(a); }); }
+        }
+    </script>
+</body>
+</html>
