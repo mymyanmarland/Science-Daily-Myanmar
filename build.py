@@ -9,8 +9,8 @@ from pygments.lexers import get_lexer_by_name
 from pygments.formatters import HtmlFormatter
 
 # --- CONFIGURATION ---
-# အရေးကြီးသည်: ဒီနေရာမှာ ကိုယ့် Website Link အမှန်ကို နောက်ပိုင်း ပြန်လာပြင်ပါ
-BASE_URL = "https://sdmm.site" 
+BASE_URL = "https://sdmm.site"  # <--- အစ်ကို့ Domain အမှန်
+DOMAIN_NAME = "sdmm.site"       # <--- CNAME အတွက် သီးသန့်ထည့်ပေးပါ
 
 CONTENT_DIR = 'content'
 OUTPUT_DIR = 'docs'
@@ -36,6 +36,12 @@ def clean_and_create_dir(path):
     os.makedirs(path)
     os.makedirs(os.path.join(path, 'css'))
     os.makedirs(os.path.join(path, 'images'))
+
+def create_cname_file():
+    """Create CNAME file for GitHub Pages Custom Domain"""
+    print(f"   Creating CNAME file for {DOMAIN_NAME}...")
+    with open(os.path.join(OUTPUT_DIR, 'CNAME'), 'w') as f:
+        f.write(DOMAIN_NAME)
 
 def generate_css_syntax_highlighting():
     print("   Generating Syntax Highlighter CSS...")
@@ -74,14 +80,12 @@ def parse_markdown_posts():
             if 'summary' not in meta: meta['summary'] = "No summary provided."
             if 'date' not in meta: meta['date'] = '2025-01-01'
             
-            # --- Cover Image Logic ---
-            # Markdown မှာ Image: images/pic.jpg လို့မပါရင် default ပုံထည့်မယ်
+            # Cover Image Logic
             if 'image' not in meta:
-                meta['image'] = 'images/default-cover.jpg' # Default ပုံတစ်ခုလုပ်ထားပါ
+                meta['image'] = 'images/default-cover.jpg'
             
-            # Full URL for Facebook Sharing
+            # Full URL construction
             full_image_url = f"{BASE_URL}/{meta['image']}"
-
             slug = filename.replace('.md', '.html')
             full_url = f"{BASE_URL}/{slug}"
             
@@ -91,7 +95,7 @@ def parse_markdown_posts():
                 'meta': meta,
                 'filename': filename,
                 'read_time': read_time,
-                'full_image_url': full_image_url, # For Meta Tag
+                'full_image_url': full_image_url,
                 'full_url': full_url
             })
             md.reset() 
@@ -103,6 +107,9 @@ def build():
     print("🚀 Starting Build Process...")
     clean_and_create_dir(OUTPUT_DIR)
     
+    # ၁။ CNAME ဖိုင် အရင်ဆောက်ပါ (အရေးကြီးသည်)
+    create_cname_file()
+
     src_img = os.path.join(CONTENT_DIR, 'images')
     if os.path.exists(src_img):
         print("   Copying images...")
@@ -115,8 +122,7 @@ def build():
         print("❌ No posts found. Exiting.")
         return
 
-    # Generate Search Index
-    print("   Creating search index...")
+    # Search Index
     search_data = []
     for post in posts:
         search_data.append({
@@ -142,7 +148,7 @@ def build():
             f.write(post_template.render(
                 post=post, 
                 title=post['meta'].get('title'),
-                base_url=BASE_URL # Pass Base URL to template
+                base_url=BASE_URL
             ))
     
     total_posts = len(posts)
@@ -154,6 +160,7 @@ def build():
         chunk = posts[start:end]
         
         filename = 'index.html' if page_num == 1 else f'page{page_num}.html'
+        
         prev_url = ''
         next_url = ''
         if page_num > 1: prev_url = 'index.html' if page_num == 2 else f'page{page_num-1}.html'
