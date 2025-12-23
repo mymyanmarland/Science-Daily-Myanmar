@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="row align-items-end mb-5" data-aos="fade-down">
+    <div class="col-lg-8">
+        <h4 class="text-uppercase text-info mb-2" style="font-size: 0.8rem; letter-spacing: 3px;">စကြာဝဠာရဲ့ လျှို့ဝှက်ဆန်းကြယ်မှုများ၊ သိပ္ပံသီအိုရီများနှင့် တွေးခေါ်စရာ အကြောင်းအရာများ</h4>
+        <h1 class="display-4 fw-bold text-white brand-font">LATEST <span style="color: var(--primary); text-shadow: 0 0 20px rgba(0,242,255,0.4);">ARTICLES</span></h1>
+    </div>
+    <div class="col-lg-4 text-lg-end d-none d-lg-block">
+        <p class="text-secondary mb-1">Total Posts: <span class="text-white fw-bold">{{ posts|length }}</span></p>
+        <div class="h-1 bg-secondary w-100 mt-2 opacity-25" style="height: 1px;"></div>
+    </div>
+</div>
+
+<div class="row g-5">
+    
+    <div class="col-lg-8">
+        {% for post in posts %}
+        <article class="glass-card p-4 mb-4 position-relative border-0" data-aos="fade-up" data-aos-delay="{{ loop.index * 50 }}">
+            <div class="d-flex align-items-center gap-3 mb-3 text-secondary" style="font-size: 0.85rem;">
+                <span class="badge bg-dark border border-secondary text-secondary rounded-pill px-3 py-2">
+                    <i class="fas fa-code me-1"></i> Tech
+                </span>
+                <span><i class="far fa-calendar me-1"></i> {{ post.meta.date }}</span>
+                <span><i class="far fa-clock me-1"></i> {{ post.read_time }} min read</span>
+            </div>
+
+            <a href="{{ post.slug }}" class="text-decoration-none">
+                <h2 class="h3 fw-bold text-white mb-3 hover-underline">{{ post.meta.title }}</h2>
+            </a>
+
+            <p class="text-secondary mb-4" style="line-height: 1.7; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
+                {{ post.meta.summary }}
+            </p>
+
+            <div class="d-flex align-items-center justify-content-between pt-3 border-top border-secondary border-opacity-25">
+                <div class="d-flex align-items-center gap-2">
+                    <div style="width: 30px; height: 30px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: black; font-weight: bold;">A</div>
+                    <small class="text-light">Mr Nova မှ ရေးသားသည်</small>
+                </div>
+                <a href="{{ post.slug }}" class="text-info fw-bold text-decoration-none small">
+                    READ ARTICLE <i class="fas fa-arrow-right ms-1"></i>
+                </a>
+            </div>
+        </article>
+        {% endfor %}
+
+        <div class="d-flex justify-content-center gap-3 mt-5">
+            {% if prev_url %}
+                <a href="{{ prev_url }}" class="btn btn-outline-secondary px-4 py-2 rounded-pill">Previous</a>
+            {% endif %}
+            {% if next_url %}
+                <a href="{{ next_url }}" class="btn btn-outline-info px-4 py-2 rounded-pill">Next Page</a>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="sticky-top" style="top: 100px; z-index: 1;">
+            
+            <div class="glass-card p-4 mb-4 text-center" data-aos="fade-left" data-aos-delay="200">
+                <div class="mx-auto mb-3" style="width: 80px; height: 80px; background: linear-gradient(45deg, var(--primary), #bd00ff); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: #fff;">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <h5 class="fw-bold text-white brand-font">ABOUT ME</h5>
+                <p class="text-secondary small mt-2">
+                    ဒီ Page လေးမှာ ကျွန်တော် လေ့လာထားတဲ့ နည်းပညာတွေကို ပြန်လည်မျှဝေသွားမှာပါ။
+                </p>
+                <div class="d-flex justify-content-center gap-3 mt-3">
+                    <a href="#" class="text-secondary hover-white"><i class="fab fa-github fa-lg"></i></a>
+                    <a href="#" class="text-secondary hover-white"><i class="fab fa-twitter fa-lg"></i></a>
+                </div>
+            </div>
+
+            <div class="glass-card p-4" data-aos="fade-left" data-aos-delay="300">
+                <h5 class="fw-bold text-white mb-3 brand-font">TOPICS</h5>
+                <div class="d-flex flex-wrap gap-2">
+                    <span class="badge bg-dark border border-secondary text-secondary p-2">Space </span>
+                    <span class="badge bg-dark border border-secondary text-secondary p-2">Tech</span>
+                    <span class="badge bg-dark border border-secondary text-secondary p-2">AI</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .hover-underline:hover { text-decoration: underline !important; text-decoration-color: var(--primary) !important; text-underline-offset: 4px; }
+    .hover-white:hover { color: #fff !important; }
+</style>
+
+{% endblock %}

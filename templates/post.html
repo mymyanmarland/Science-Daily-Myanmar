@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+
+<nav aria-label="breadcrumb" class="mb-4" data-aos="fade-right">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="index.html" class="text-secondary text-decoration-none">Home</a></li>
+    <li class="breadcrumb-item active text-white" aria-current="page">Article</li>
+  </ol>
+</nav>
+
+<div class="row justify-content-center">
+    <div class="col-lg-9">
+        <article data-aos="fade-up">
+            <header class="mb-5 pb-4 border-bottom border-secondary border-opacity-50">
+                <div class="d-flex gap-3 text-secondary mb-3 small fw-bold font-monospace">
+                    <span><i class="far fa-calendar me-1"></i> {{ post.meta.date }}</span>
+                    <span><i class="far fa-clock me-1"></i> {{ post.read_time }} min read</span>
+                </div>
+                <h1 class="display-4 fw-bold text-white mb-3 brand-font">{{ title }}</h1>
+                <p class="lead text-info opacity-75">{{ post.meta.summary }}</p>
+            </header>
+
+            <div class="content fs-5 lh-lg text-light" style="text-align: justify; color: #d1d5db;">
+                {{ post.html|safe }}
+            </div>
+
+            <div class="mt-5 pt-4 d-flex justify-content-between border-top border-secondary border-opacity-50">
+                <a href="index.html" class="btn btn-outline-light rounded-pill px-4">
+                    <i class="fas fa-arrow-left me-2"></i> Back to Home
+                </a>
+            </div>
+        </article>
+    </div>
+</div>
+{% endblock %}

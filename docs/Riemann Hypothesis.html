@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riemann Hypothesis | Science Daily Myanmar</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Noto+Sans+Myanmar:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/syntax.css">
+
+    <style>
+        :root {
+            --font-head: 'Space Grotesk', sans-serif;
+            --font-body: 'Noto Sans Myanmar', sans-serif;
+            --primary: #00f2ff;
+            --bg-dark: #050505;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-dark);
+            color: #e0e0e0;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Ambient Glow Background */
+        .ambient-glow {
+            position: fixed; width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(0,242,255,0.1) 0%, rgba(0,0,0,0) 70%);
+            top: -100px; left: -100px; z-index: -1; filter: blur(80px);
+            animation: float 10s infinite alternate;
+        }
+        @keyframes float { 0% { transform: translate(0, 0); } 100% { transform: translate(50px, 50px); } }
+
+        h1, h2, h3, h4, .brand-font { font-family: var(--font-head); letter-spacing: -0.5px; }
+        .glass-card { background: var(--glass-bg); border: 1px solid var(--border); border-radius: 16px; backdrop-filter: blur(10px); }
+        .content img { max-width: 100%; height: auto; border-radius: 12px; margin: 20px 0; border: 1px solid var(--border); }
+        .progress-container { position: fixed; top: 0; left: 0; width: 100%; height: 3px; z-index: 9999; background: transparent; }
+        .progress-bar { height: 3px; background: var(--primary); width: 0%; box-shadow: 0 0 10px var(--primary); }
+
+        /* Back to Top */
+        #btn-back-to-top {
+            position: fixed; bottom: 30px; right: 30px; display: none; z-index: 1000;
+            background: rgba(0, 242, 255, 0.1); border: 1px solid var(--primary); color: var(--primary);
+            width: 45px; height: 45px; border-radius: 50%; transition: 0.3s;
+        }
+        #btn-back-to-top:hover { background: var(--primary); color: #000; transform: translateY(-5px); }
+
+        /* --- SEARCH MODAL CSS --- */
+        .search-modal {
+            display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.8); backdrop-filter: blur(5px);
+        }
+        .search-content {
+            background-color: #1a1a1a; margin: 10% auto; padding: 20px; border: 1px solid var(--primary);
+            width: 80%; max-width: 600px; border-radius: 15px; box-shadow: 0 0 30px rgba(0, 242, 255, 0.2);
+        }
+        #searchInput {
+            width: 100%; padding: 15px; font-size: 1.2rem; background: #000; border: 1px solid #333; color: white; border-radius: 8px; outline: none;
+        }
+        #searchInput:focus { border-color: var(--primary); }
+        #searchResults { max-height: 300px; overflow-y: auto; margin-top: 15px; }
+        .search-item {
+            display: block; padding: 10px; border-bottom: 1px solid #333; color: #ccc; text-decoration: none; transition: 0.2s;
+        }
+        .search-item:hover { background: rgba(0, 242, 255, 0.1); color: var(--primary); padding-left: 15px; }
+
+        /* Code Block Styling */
+        .code-wrapper { position: relative; margin: 2rem 0; }
+        .codehilite { border-radius: 10px; padding: 1.5rem; background: #111 !important; border: 1px solid #333; overflow-x: auto; }
+        .btn-copy { position: absolute; top: 10px; right: 10px; background: rgba(255,255,255,0.1); border: none; color: #ccc; font-size: 0.75rem; padding: 4px 10px; border-radius: 4px; cursor: pointer; }
+        .navbar { background: rgba(5,5,5,0.8); backdrop-filter: blur(15px); border-bottom: 1px solid var(--border); }
+    </style>
+</head>
+<body>
+
+    <div class="ambient-glow"></div>
+    <div class="progress-container"><div class="progress-bar" id="myBar"></div></div>
+
+    <div id="mySearchModal" class="search-modal">
+        <div class="search-content">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h5 class="text-white brand-font">SEARCH</h5>
+                <span class="text-secondary" style="cursor:pointer; font-size: 1.5rem;" onclick="closeSearch()">&times;</span>
+            </div>
+            <input type="text" id="searchInput" placeholder="Type to search..." onkeyup="searchFunction()">
+            <div id="searchResults"></div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg fixed-top py-3">
+        <div class="container">
+            <a class="navbar-brand fs-4 fw-bold text-white brand-font" href="index.html">
+                <i class="fa-solid fa-bolt text-info me-2"></i>Science<span style="color:var(--primary)">Daily</span>
+            </a>
+            
+            <button class="btn btn-outline-secondary rounded-pill ms-auto px-3" onclick="openSearch()">
+                <i class="fas fa-search me-2"></i> Search
+            </button>
+        </div>
+    </nav>
+
+    <div class="container" style="margin-top: 100px; min-height: 80vh; padding-bottom: 100px;">
+        
+
+<nav aria-label="breadcrumb" class="mb-4" data-aos="fade-right">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="index.html" class="text-secondary text-decoration-none">Home</a></li>
+    <li class="breadcrumb-item active text-white" aria-current="page">Article</li>
+  </ol>
+</nav>
+
+<div class="row justify-content-center">
+    <div class="col-lg-9">
+        <article data-aos="fade-up">
+            <header class="mb-5 pb-4 border-bottom border-secondary border-opacity-50">
+                <div class="d-flex gap-3 text-secondary mb-3 small fw-bold font-monospace">
+                    <span><i class="far fa-calendar me-1"></i> 2025-12-03</span>
+                    <span><i class="far fa-clock me-1"></i> 2 min read</span>
+                </div>
+                <h1 class="display-4 fw-bold text-white mb-3 brand-font">Riemann Hypothesis</h1>
+                <p class="lead text-info opacity-75">သင်္ချာလောကရဲ့ "အက်တမ်" များနဲ့ လူသားတွေ နှစ်ပေါင်း (၁၆၀) ကျော် ဖြေရှင်းမရသေးတဲ့ ဒေါ်လာ (၁) သန်းတန် ပဟေဠိကြီး</p>
+            </header>
+
+            <div class="content fs-5 lh-lg text-light" style="text-align: justify; color: #d1d5db;">
+                <p><img alt="ပုံအကြောင်းစာသား" src="images/5.jpg" /></p>
+<p>သင်္ချာလောကရဲ့ "အက်တမ်" များနဲ့ လူသားတွေ နှစ်ပေါင်း (၁၆၀) ကျော် ဖြေရှင်းမရသေးတဲ့ ဒေါ်လာ (၁) သန်းတန် ပဟေဠိကြီး</p>
+<p>ကျွန်တော်တို့ ငယ်ငယ်က ကျောင်းသင်္ချာသင်ခန်းစာတွေမှာ "သုဒ္ဓကိန်း" (Prime Numbers) ဆိုတာကို စတင်သင်ကြားခဲ့ဖူးကြမှာပါ။ ၂၊ ၃၊ ၅၊ ၇၊ ၁၁၊ ၁၃ စသဖြင့် ကိုယ်တိုင်နဲ့ ၁ ကလွဲပြီး စားလို့မပြတ်တဲ့ ကိန်းဂဏန်းတွေပေါ့။ ငယ်စဉ်ကတော့ ဒါဟာ သင်္ချာရဲ့ သာမန်အစိတ်အပိုင်းလေးတစ်ခု၊ စာမေးပွဲဖြေဖို့လောက်သာ အရေးပါတယ်လို့ ထင်ခဲ့ကြပါလိမ့်မယ်။ ဒါပေမဲ့ တကယ်တမ်းမှာတော့ ဒီရိုးရှင်းတယ်ထင်ရတဲ့ ကိန်းဂဏန်းတွေဟာ လူသားမျိုးနွယ်တစ်ခုလုံးအတွက် အကြီးမားဆုံး ပဟေဠိကြီးတစ်ခု ဖြစ်နေတယ်ဆိုတာ သင်သိပါသလား။ 🤯</p>
+<p>ရူပဗေဒပညာရှင်တွေမှာ အရာရာကို ဖွဲ့စည်းထားတဲ့ အခြေခံအကျဆုံး "အက်တမ်" (Atom) တွေ ရှိသလိုမျိုးပဲ၊ သင်္ချာပညာရှင်တွေမှာလည်း အခြေခံအကျဆုံး တည်ဆောက်ပုံအဖြစ် "သုဒ္ဓကိန်း" တွေ ရှိပါတယ်။ ကမ္ဘာပေါ်မှာရှိတဲ့ ကိန်းဂဏန်းမှန်သမျှကို ဒီသုဒ္ဓကိန်းတွေနဲ့ မြှောက်ပြီး ဖွဲ့စည်းထားရတာပါ။ Warwick တက္ကသိုလ်က ပါမောက္ခ Adam Harper ပြောသလိုပါပဲ၊ သုဒ္ဓကိန်းတွေဟာ ဂဏန်းတွေရဲ့ အခြေခံအုတ်မြစ်တွေ ဖြစ်ပါတယ်။ ပြဿနာက ဘာလဲဆိုတော့ ဒီသုဒ္ဓကိန်းတွေရဲ့ နေရာချထားပုံက မင်းမဲ့စရိုက် ဆန်လွန်းနေတာပါပဲ။ ဘာပုံသေနည်း၊ ဘာနိယာမမှ မရှိဘဲ ကျပန်းသဘောမျိုး ပေါ်ချင်တဲ့နေရာမှာ ပေါ်လာသလို ဖြစ်နေလို့ပါပဲ။ 🎲</p>
+<p>လွန်ခဲ့တဲ့ နှစ်ပေါင်း ၂,၂၀၀ လောက်က Eratosthenes (အရပ်တိုစတီး) ဆိုတဲ့ ပညာရှင်ကြီးက သုဒ္ဓကိန်းတွေကို ရှာဖွေနိုင်မယ့် "Sieve of Eratosthenes" နည်းလမ်းကို စတင်ဖော်ထုတ်ခဲ့ပါတယ်။ သူ့နည်းလမ်းက အရမ်းကောင်းလွန်းလို့ ဒီနေ့ခေတ်ထိ အလုပ်ဖြစ်နေတုန်းပါပဲ။ ဒါပေမဲ့ Oxford တက္ကသိုလ်က Fields Medal ဆုရှင် James Maynard ပြောပြတဲ့ အချက်က စိတ်ဝင်စားဖို့ ကောင်းပါတယ်။ "Eratosthenes ရဲ့ နည်းလမ်းက ဘယ်ဂဏန်းဟာ သုဒ္ဓကိန်းဖြစ်တယ်ဆိုတာ ပြောပြနိုင်ပေမဲ့၊ ဘာကြောင့် ဒီလိုဖြစ်ရသလဲဆိုတဲ့ သီအိုရီသဘောတရားကိုတော့ ရှင်းမပြနိုင်ပါဘူး" တဲ့။ ဆိုလိုတာက ဂဏန်းတွေကိုတော့ ရှာတွေ့တယ်၊ ဒါပေမဲ့ သူတို့ရဲ့ ဖြစ်တည်ပုံ ပုံစံ (Pattern) ကိုတော့ ကျွန်တော်တို့ နားမလည်နိုင်သေးပါဘူး။</p>
+<p>ဒီမင်းမဲ့စရိုက်ဆန်တဲ့ ဂဏန်းတွေကို စနစ်တကျ ရှင်းပြဖို့ ကြိုးစားခဲ့သူကတော့ ၁၈၅၉ ခုနှစ်မှာ ဂျာမန်သင်္ချာပညာရှင် Bernhard Riemann (ဘန်းဟတ် ရိုင်မန်) ဖြစ်ပါတယ်။ ရိုင်မန်က သုဒ္ဓကိန်းတွေရဲ့ ရှုပ်ထွေးပွေလီတဲ့ ဖြန့်ကျက်မှုပုံစံအနောက်မှာ "လျှို့ဝှက်တဲ့ စည်းချက် (Hidden Harmony)" တစ်ခု ရှိနေတယ်လို့ ယုံကြည်ခဲ့ပါတယ်။ သူက "Riemann Zeta Function" လို့ခေါ်တဲ့ ရှုပ်ထွေးတဲ့ ညီမျှခြင်းတစ်ခုကို အသုံးပြုပြီး သုဒ္ဓကိန်းတွေရဲ့ သဘောသဘာဝကို ဖော်ထုတ်ဖို့ ကြိုးစားခဲ့ပါတယ်။ 🎼</p>
+<p>ရိုင်မန်ရဲ့ တွေ့ရှိချက်အရ ဒီ Zeta Function ရဲ့ တန်ဖိုး "သုည (Zero)" ဖြစ်စေတဲ့ အမှတ်နေရာတွေက သုဒ္ဓကိန်းတွေ ဘယ်လိုဖြန့်ကျက်တည်ရှိနေလဲဆိုတာကို ညွှန်ပြနေတယ်လို့ ဆိုပါတယ်။ ရိုင်မန်က ဒီသုညအမှတ်တွေ အားလုံးဟာ မျဉ်းဖြောင့်တစ်ကြောင်းတည်း ပေါ်မှာပဲ တန်းစီပြီး တည်ရှိနေလိမ့်မယ်လို့ ဟောကိန်းထုတ်ခဲ့ပါတယ်။ ဒါကို "Riemann Hypothesis" လို့ လူသိများကြပါတယ်။ ဒီအချက်သာ မှန်ကန်ခဲ့ရင် သုဒ္ဓကိန်းတွေဟာ ကျပန်းဖြစ်နေတာ မဟုတ်ဘဲ၊ သဘာဝတရားရဲ့ အလွန်လှပသေသပ်တဲ့ စည်းမျဉ်းတစ်ခုအောက်မှာ ရှိနေတယ်ဆိုတာ သက်သေပြနိုင်မှာ ဖြစ်ပါတယ်။</p>
+<p>ဒါပေမဲ့ ခက်တာက... ရိုင်မန်က ဒါကို "မှန်လိမ့်မယ်" လို့ပဲ အဆိုပြုခဲ့တာပါ။ သင်္ချာနည်းအရ ရာနှုန်းပြည့် တိကျတဲ့ သက်သေပြချက် (Proof) ကိုတော့ သူကိုယ်တိုင်လည်း မချပြနိုင်ခဲ့သလို၊ သူ့နောက်ပိုင်း ပေါ်ပေါက်လာတဲ့ ဘယ်သင်္ချာပညာရှင်ကမှလည်း နှစ်ပေါင်း ၁၆၀ ကျော်ကြာတဲ့အထိ သက်သေမပြနိုင်သေးပါဘူး။ ဒီပုစ္ဆာဟာ ဘယ်လောက်တောင် အရေးကြီးလဲဆိုရင် ၂၀၀၀ ပြည့်နှစ်မှာ Clay Mathematics Institute ကနေ ဖြေရှင်းရန် အခက်ခဲဆုံး ထောင်စုနှစ် ပြဿနာကြီး (၇) ခုထဲမှာ ထည့်သွင်းခဲ့ပြီး၊ ဖြေရှင်းနိုင်သူကို အမေရိကန်ဒေါ်လာ (၁) သန်း ဆုချမယ်လို့ ကြေညာထားပါတယ်။ 💰</p>
+<p>လက်ရှိ နည်းပညာအခြေအနေမှာတော့ Supercomputer တွေကို အသုံးပြုပြီး ဂဏန်းပေါင်း (၁၀) ထရီလီယံ (သုည ၁၃ လုံးပါတဲ့ ပမာဏ) အထိ စစ်ဆေးကြည့်တဲ့အခါ ရိုင်မန်ရဲ့ အဆိုပြုချက်က မှန်ကန်နေတာကို တွေ့ရပါတယ်။ ဒါပေမဲ့ သင်္ချာလောကမှာက "ထရီလီယံအထိ မှန်တာနဲ့ အားလုံးမှန်တယ်" လို့ ယူဆလို့ မရပါဘူး။ ဂဏန်းအရေအတွက်က အဆုံးမရှိ (Infinity) ဖြစ်တဲ့အတွက် တစ်နေရာရာမှာ လွဲချော်သွားနိုင်မလား ဆိုတာကို သံသယ ရှင်းရှင်းလင်းလင်းဖြစ်အောင် သက်သေပြဖို့ လိုအပ်နေတာပါ။ 💻</p>
+<p>ဒါပေမဲ့ လူသားတွေဟာ ဒီပုစ္ဆာကြီးကို လက်ပိုက်ကြည့်မနေပါဘူး။ ပြီးခဲ့တဲ့ ဆယ်စုနှစ်အတွင်းမှာ တိုးတက်မှုကြီးကြီးမားမားတွေ ရှိခဲ့ပါတယ်။ အထူးသဖြင့် "Twin Prime Conjecture" (ခြားနားခြင်း ၂ သာရှိတဲ့ သုဒ္ဓကိန်းစုံတွဲများ၊ ဥပမာ - ၁၁ နှင့် ၁၃) နဲ့ ပတ်သက်ပြီး Yitang Zhang ဆိုတဲ့ ပညာရှင်က အံ့မခန်း သက်သေပြနိုင်ခဲ့ပါတယ်။ အစပိုင်းမှာ ကွာဟချက် သန်း ၇၀ အတွင်းမှာ ဒီလိုအတွဲတွေ ရှိနေကြောင်း သက်သေပြခဲ့ရာကနေ နောက်ပိုင်းမှာ Terence Tao နဲ့ Polymath Project အဖွဲ့သားတွေက ကွာဟချက် ၂၄၆ အထိ ကျဉ်းမြောင်းအောင် လုပ်ဆောင်နိုင်ခဲ့ကြပါတယ်။ ဒါဟာ လူသားတွေရဲ့ ဉာဏ်ရည်တိုးတက်မှုကို ပြသနေတဲ့ မှတ်တိုင်တစ်ခုပါပဲ။ 🚀</p>
+<p>ဒီပုစ္ဆာကြီးကို ဖြေရှင်းနိုင်ခြင်း၊ မနိုင်ခြင်းက ကျွန်တော်တို့ နေ့စဉ်ဘဝအပေါ်မှာရော သက်ရောက်မှု ရှိလားလို့ မေးစရာရှိပါတယ်။ အဖြေကတော့ "ရှိပါတယ်"။ အထူးသဖြင့် ဆိုက်ဘာလုံခြုံရေး (Cybersecurity) အပိုင်းမှာပါ။ ဒီနေ့ခေတ် ကျွန်တော်တို့ သုံးနေတဲ့ ဘဏ်ကတ်တွေ၊ အင်တာနက် လုံခြုံရေးစနစ်တွေ (RSA Encryption) တော်တော်များများက သုဒ္ဓကိန်းကြီးတွေကို ခွဲခြမ်းစိတ်ဖြာရခက်တယ်ဆိုတဲ့ အချက်ပေါ်မှာ အခြေခံထားတာပါ။ တကယ်လို့များ တစ်စုံတစ်ယောက်က သုဒ္ဓကိန်းတွေရဲ့ ပုံစံကို အတိအကျ သိသွားခဲ့မယ်ဆိုရင်၊ ဒါမှမဟုတ် ရိုင်မန်ရဲ့ သီအိုရီကို ဖြေရှင်းရင်း ဖြတ်လမ်းနည်းတွေ ပေါ်လာခဲ့မယ်ဆိုရင် ကမ္ဘာ့ဒစ်ဂျစ်တယ် လုံခြုံရေးစနစ်တစ်ခုလုံး ပြောင်းလဲသွားနိုင်ပါတယ်။ 🔐</p>
+<p>နိဂုံးချုပ်ရရင်တော့ သုဒ္ဓကိန်းတွေနဲ့ ပတ်သက်ပြီး ပြီးပြည့်စုံတဲ့ နားလည်မှုကို ရရှိဖို့ဆိုတာ မနက်ဖြန် သဘက်ခါ ဖြစ်လာမှာတော့ မဟုတ်ပါဘူး။ ပါမောက္ခ Maynard ကတော့ "သုဒ္ဓကိန်းတွေဟာ ပင်ကိုသဘာဝအရကို ရှုပ်ထွေးလွန်းပြီး ပြီးပြည့်စုံတဲ့ တည်ဆောက်ပုံ မရှိတာလည်း ဖြစ်နိုင်တယ်" လို့ ဆိုပါတယ်။ ဒါပေမဲ့ Riemann Hypothesis လို ပုစ္ဆာကြီးတွေကို ဖြေရှင်းဖို့ ကြိုးစားရင်းနဲ့ လူသားတွေဟာ သင်္ချာဆိုင်ရာ "လက်နက်ကိရိယာ" အသစ်တွေကို တီထွင်ဖန်တီးနိုင်လာကြပါတယ်။ အဖြေကို ရှာမတွေ့ခင်မှာတောင်၊ အဖြေရှာဖို့ လျှောက်လှမ်းနေတဲ့ လမ်းခရီးကတင် ကျွန်တော်တို့ရဲ့ နည်းပညာနဲ့ တွေးခေါ်မှုတွေကို အဆမတန် မြင့်မားစေခဲ့ပြီ ဖြစ်ပါတယ်။</p>
+<p>ဒါကြောင့် နောက်တစ်ခါ ၂၊ ၃၊ ၅၊ ၇ ဆိုတဲ့ ဂဏန်းလေးတွေကို မြင်တဲ့အခါ ရိုးရှင်းတဲ့ ဂဏန်းတွေလို့ မမြင်ဘဲ သဘာဝတရားကြီးက ဖုံးကွယ်ထားတဲ့၊ လူသားတွေ ရှာဖွေနေဆဲဖြစ်တဲ့ အနက်ရှိုင်းဆုံး လျှို့ဝှက်ချက်တွေအဖြစ် ရှုမြင်ကြည့်ကြပါစို့။ 🌌✨</p>
+            </div>
+
+            <div class="mt-5 pt-4 d-flex justify-content-between border-top border-secondary border-opacity-50">
+                <a href="index.html" class="btn btn-outline-light rounded-pill px-4">
+                    <i class="fas fa-arrow-left me-2"></i> Back to Home
+                </a>
+            </div>
+        </article>
+    </div>
+</div>
+
+    </div>
+
+    <button type="button" id="btn-back-to-top"><i class="fas fa-arrow-up"></i></button>
+
+    <footer class="text-center py-5 border-top border-dark mt-5">
+        <small class="text-secondary">© 2025 TechBlog. Generated with Python.</small>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({once: true});
+
+        // Scroll Progress & Back to Top
+        window.onscroll = function() {
+            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
+            document.getElementById("btn-back-to-top").style.display = (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) ? "block" : "none";
+        };
+        document.getElementById("btn-back-to-top").addEventListener("click", function(){ window.scrollTo({top: 0, behavior: 'smooth'}); });
+
+        // Copy Code
+        document.querySelectorAll('.codehilite').forEach((block) => {
+            let wrapper = document.createElement('div'); wrapper.className = 'code-wrapper'; block.parentNode.insertBefore(wrapper, block); wrapper.appendChild(block);
+            let button = document.createElement('button'); button.className = 'btn-copy'; button.innerHTML = '<i class="far fa-copy"></i> Copy'; wrapper.appendChild(button);
+            button.addEventListener('click', async () => {
+                await navigator.clipboard.writeText(block.querySelector('pre').innerText);
+                button.innerHTML = '<i class="fas fa-check"></i>'; setTimeout(() => { button.innerHTML = '<i class="far fa-copy"></i> Copy'; }, 2000);
+            });
+        });
+
+        // --- SEARCH LOGIC ---
+        let postsData = [];
+
+        // 1. Fetch JSON Data
+        fetch('search.json')
+            .then(response => response.json())
+            .then(data => { postsData = data; })
+            .catch(error => console.log('Error loading search data:', error));
+
+        // 2. Open/Close Modal
+        function openSearch() { document.getElementById("mySearchModal").style.display = "block"; document.getElementById("searchInput").focus(); }
+        function closeSearch() { document.getElementById("mySearchModal").style.display = "none"; }
+        
+        // Close modal if clicked outside
+        window.onclick = function(event) {
+            if (event.target == document.getElementById("mySearchModal")) { closeSearch(); }
+        }
+
+        // 3. Search Filter Function
+        function searchFunction() {
+            let input = document.getElementById("searchInput").value.toLowerCase();
+            let resultsDiv = document.getElementById("searchResults");
+            resultsDiv.innerHTML = ""; // Clear previous
+
+            if (input.length < 1) return;
+
+            let filteredPosts = postsData.filter(post => {
+                return post.title.toLowerCase().includes(input) || post.summary.toLowerCase().includes(input);
+            });
+
+            if (filteredPosts.length === 0) {
+                resultsDiv.innerHTML = "<p class='text-secondary mt-3'>No results found.</p>";
+            } else {
+                filteredPosts.forEach(post => {
+                    let a = document.createElement("a");
+                    a.href = post.url;
+                    a.className = "search-item";
+                    a.innerHTML = `<div class='fw-bold'>${post.title}</div><small class='text-muted'>${post.summary.substring(0, 50)}...</small>`;
+                    resultsDiv.appendChild(a);
+                });
+            }
+        }
+    </script>
+</body>
+</html>
