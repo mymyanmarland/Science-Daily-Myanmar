@@ -2,13 +2,16 @@ import os
 import shutil
 import math
 import markdown
-import json  # <--- ဒီတစ်ခု အသစ်တိုးလာပါတယ်
+import json
 from jinja2 import Environment, FileSystemLoader
 from pygments import highlight
 from pygments.lexers import get_lexer_by_name
 from pygments.formatters import HtmlFormatter
 
 # --- CONFIGURATION ---
+# အရေးကြီးသည်: ဒီနေရာမှာ ကိုယ့် Website Link အမှန်ကို နောက်ပိုင်း ပြန်လာပြင်ပါ
+BASE_URL = "https://sdmm.site" 
+
 CONTENT_DIR = 'content'
 OUTPUT_DIR = 'docs'
 TEMPLATE_DIR = 'templates'
@@ -51,9 +54,6 @@ def parse_markdown_posts():
         return []
 
     files = [f for f in os.listdir(CONTENT_DIR) if f.endswith(".md")]
-    if not files:
-        print("⚠️ Warning: .md file တစ်ခုမှ မတွေ့ပါ။")
-        return []
 
     for filename in files:
         filepath = os.path.join(CONTENT_DIR, filename)
@@ -73,15 +73,26 @@ def parse_markdown_posts():
             if 'title' not in meta: meta['title'] = filename.replace('.md', '')
             if 'summary' not in meta: meta['summary'] = "No summary provided."
             if 'date' not in meta: meta['date'] = '2025-01-01'
+            
+            # --- Cover Image Logic ---
+            # Markdown မှာ Image: images/pic.jpg လို့မပါရင် default ပုံထည့်မယ်
+            if 'image' not in meta:
+                meta['image'] = 'images/default-cover.jpg' # Default ပုံတစ်ခုလုပ်ထားပါ
+            
+            # Full URL for Facebook Sharing
+            full_image_url = f"{BASE_URL}/{meta['image']}"
 
             slug = filename.replace('.md', '.html')
+            full_url = f"{BASE_URL}/{slug}"
             
             posts.append({
                 'slug': slug,
                 'html': html,
                 'meta': meta,
                 'filename': filename,
-                'read_time': read_time
+                'read_time': read_time,
+                'full_image_url': full_image_url, # For Meta Tag
+                'full_url': full_url
             })
             md.reset() 
     
@@ -104,7 +115,7 @@ def build():
         print("❌ No posts found. Exiting.")
         return
 
-    # --- NEW: Generate Search Index JSON ---
+    # Generate Search Index
     print("   Creating search index...")
     search_data = []
     for post in posts:
@@ -113,10 +124,8 @@ def build():
             "url": post['slug'],
             "summary": post['meta']['summary']
         })
-    
     with open(os.path.join(OUTPUT_DIR, 'search.json'), 'w', encoding='utf-8') as f:
         json.dump(search_data, f)
-    # ---------------------------------------
 
     print(f"   Generating HTML for {len(posts)} posts...")
     
@@ -130,7 +139,11 @@ def build():
     for post in posts:
         output_path = os.path.join(OUTPUT_DIR, post['slug'])
         with open(output_path, 'w', encoding='utf-8') as f:
-            f.write(post_template.render(post=post, title=post['meta'].get('title')))
+            f.write(post_template.render(
+                post=post, 
+                title=post['meta'].get('title'),
+                base_url=BASE_URL # Pass Base URL to template
+            ))
     
     total_posts = len(posts)
     total_pages = math.ceil(total_posts / POSTS_PER_PAGE)
@@ -141,13 +154,10 @@ def build():
         chunk = posts[start:end]
         
         filename = 'index.html' if page_num == 1 else f'page{page_num}.html'
-        
         prev_url = ''
         next_url = ''
-        if page_num > 1:
-            prev_url = 'index.html' if page_num == 2 else f'page{page_num-1}.html'
-        if page_num < total_pages:
-            next_url = f'page{page_num+1}.html'
+        if page_num > 1: prev_url = 'index.html' if page_num == 2 else f'page{page_num-1}.html'
+        if page_num < total_pages: next_url = f'page{page_num+1}.html'
 
         with open(os.path.join(OUTPUT_DIR, filename), 'w', encoding='utf-8') as f:
             f.write(index_template.render(
@@ -156,7 +166,8 @@ def build():
                 total_pages=total_pages,
                 prev_url=prev_url,
                 next_url=next_url,
-                title="Home"
+                title="Home",
+                base_url=BASE_URL
             ))
 
     print(f"✅ Build Complete! Generated website in '{OUTPUT_DIR}/' folder.")
