@@ -1,5 +1,6 @@
 summary:ကမ္ဘာ့ပထမဆုံး Thorium နျူကလီးယားစွမ်းအင် လောင်စာအဖြစ်ပြောင်းလဲမှု တရုတ်အောင်မြင်
 Date: 2025-12-24
+Image: images/Thorium Energy.jpg
 ![ပုံအကြောင်းစာသား](images/Thorium Energy.jpg)
 
 

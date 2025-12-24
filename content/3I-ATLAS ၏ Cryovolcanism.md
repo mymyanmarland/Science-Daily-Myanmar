@@ -1,5 +1,6 @@
 summary:Interstellar Object 3I/ATLAS နှင့် ပတ်သက်၍ တွေ့ရှိချက်အသစ် - 3I/ATLAS ၏ Cryovolcanism ဖြစ်စဉ် 
 Date: 2025-12-02
+Image: images/1.jpg
 ![ပုံအကြောင်းစာသား](images/1.jpg)
 
 
