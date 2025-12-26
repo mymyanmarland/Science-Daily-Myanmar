@@ -39,30 +39,56 @@
             min-height: 100vh;
         }
 
-        /* Ambient Glow Background */
-        .ambient-glow {
-            position: fixed; width: 600px; height: 600px;
-            background: radial-gradient(circle, rgba(0,242,255,0.1) 0%, rgba(0,0,0,0) 70%);
-            top: -100px; left: -100px; z-index: -1; filter: blur(80px);
-            animation: float 10s infinite alternate;
+        /* --- NEWS TICKER --- */
+        .news-ticker {
+            position: fixed; 
+            top: 76px;  
+            left: 0; width: 100%; height: 40px;
+            background: rgba(0, 0, 0, 0.8); 
+            border-top: 1px solid var(--primary); 
+            border-bottom: 1px solid var(--primary);
+            z-index: 990; 
+            overflow: hidden; display: flex; align-items: center;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 15px rgba(0, 242, 255, 0.2);
         }
-        @keyframes float { 0% { transform: translate(0, 0); } 100% { transform: translate(50px, 50px); } }
+        .ticker-content {
+            display: inline-block; white-space: nowrap;
+            animation: ticker 30s linear infinite;
+            padding-left: 100%; 
+            color: #fff; 
+            font-family: var(--font-head); 
+            font-weight: bold;
+            font-size: 0.95rem; 
+            letter-spacing: 1.5px;
+            text-shadow: 0 0 5px var(--primary); 
+        }
+        @keyframes ticker {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-100%, 0, 0); }
+        }
 
+        /* --- SNOWFLAKES --- */
+        .snowflake {
+            position: fixed; top: -10px; z-index: 9999; color: #fff; user-select: none; pointer-events: none;
+            text-shadow: 0 0 5px white;
+            animation-name: fall; animation-timing-function: linear; animation-iteration-count: infinite;
+        }
+        @keyframes fall { to { transform: translateY(105vh); } }
+
+        /* General Styles */
+        .ambient-glow { position: fixed; width: 600px; height: 600px; background: radial-gradient(circle, rgba(0,242,255,0.1) 0%, rgba(0,0,0,0) 70%); top: -100px; left: -100px; z-index: -1; filter: blur(80px); animation: float 10s infinite alternate; }
+        @keyframes float { 0% { transform: translate(0, 0); } 100% { transform: translate(50px, 50px); } }
+        
         h1, h2, h3, h4, .brand-font { font-family: var(--font-head); letter-spacing: -0.5px; }
         .glass-card { background: var(--glass-bg); border: 1px solid var(--border); border-radius: 16px; backdrop-filter: blur(10px); }
         .content img { max-width: 100%; height: auto; border-radius: 12px; margin: 20px 0; border: 1px solid var(--border); }
         .progress-container { position: fixed; top: 0; left: 0; width: 100%; height: 3px; z-index: 9999; background: transparent; }
         .progress-bar { height: 3px; background: var(--primary); width: 0%; box-shadow: 0 0 10px var(--primary); }
 
-        /* Back to Top */
-        #btn-back-to-top {
-            position: fixed; bottom: 30px; right: 30px; display: none; z-index: 1000;
-            background: rgba(0, 242, 255, 0.1); border: 1px solid var(--primary); color: var(--primary);
-            width: 45px; height: 45px; border-radius: 50%; transition: 0.3s;
-        }
+        #btn-back-to-top { position: fixed; bottom: 30px; right: 30px; display: none; z-index: 1000; background: rgba(0, 242, 255, 0.1); border: 1px solid var(--primary); color: var(--primary); width: 45px; height: 45px; border-radius: 50%; transition: 0.3s; }
         #btn-back-to-top:hover { background: var(--primary); color: #000; transform: translateY(-5px); }
 
-        /* Search Modal */
         .search-modal { display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); backdrop-filter: blur(5px); }
         .search-content { background-color: #1a1a1a; margin: 10% auto; padding: 20px; border: 1px solid var(--primary); width: 80%; max-width: 600px; border-radius: 15px; box-shadow: 0 0 30px rgba(0, 242, 255, 0.2); }
         #searchInput { width: 100%; padding: 15px; font-size: 1.2rem; background: #000; border: 1px solid #333; color: white; border-radius: 8px; outline: none; }
@@ -81,6 +107,16 @@
 
     <div class="ambient-glow"></div>
     <div class="progress-container"><div class="progress-bar" id="myBar"></div></div>
+
+    <audio id="startupSound">
+        <source src="https://cdn.pixabay.com/download/audio/2022/03/24/audio_c8c8a73467.mp3?filename=magical-chime-02-6234.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="news-ticker">
+        <div class="ticker-content">
+            <i class="fas fa-snowflake me-2"></i> SCIENCE DAILY MYANMAR • 🚀 Exploring Science & Tech • ❄️ WINTER EDITION •
+        </div>
+    </div>
 
     <div id="mySearchModal" class="search-modal">
         <div class="search-content">
@@ -104,7 +140,7 @@
         </div>
     </nav>
 
-    <div class="container" style="margin-top: 100px; min-height: 80vh; padding-bottom: 100px;">
+    <div class="container" style="margin-top: 140px; min-height: 80vh; padding-bottom: 100px;">
         
 
 <nav aria-label="breadcrumb" class="mb-4" data-aos="fade-right">
@@ -195,7 +231,6 @@ Sugars (သကြားဓာတ်) - အဆောက်အဦတစ်ခု�
             });
         });
 
-        // Search Logic
         let postsData = [];
         fetch('search.json').then(response => response.json()).then(data => { postsData = data; }).catch(error => console.log(error));
         function openSearch() { document.getElementById("mySearchModal").style.display = "block"; document.getElementById("searchInput").focus(); }
@@ -209,6 +244,41 @@ Sugars (သကြားဓာတ်) - အဆောက်အဦတစ်ခု�
             if (filteredPosts.length === 0) { resultsDiv.innerHTML = "<p class='text-secondary mt-3'>No results found.</p>"; } 
             else { filteredPosts.forEach(post => { let a = document.createElement("a"); a.href = post.url; a.className = "search-item"; a.innerHTML = `<div class='fw-bold'>${post.title}</div><small class='text-muted'>${post.summary.substring(0, 50)}...</small>`; resultsDiv.appendChild(a); }); }
         }
+
+        // --- SOUND EFFECT LOGIC (အသစ်ထည့်ထားသည်) ---
+        window.addEventListener('load', function() {
+            const audio = document.getElementById("startupSound");
+            audio.volume = 0.5; // အသံ အတိုးအကျယ် (0.0 to 1.0)
+
+            // Website ပွင့်တာနဲ့ အသံထွက်ဖို့ ကြိုးစားမည်
+            const playPromise = audio.play();
+
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    // Browser က Autoplay ပိတ်ထားရင် ဒီနေရာရောက်လာမယ်
+                    console.log("Autoplay prevented. Waiting for interaction.");
+                    
+                    // User က Screen ကို တစ်ချက်နှိပ်လိုက်တာနဲ့ အသံထွက်မည်
+                    document.addEventListener('click', () => {
+                        audio.play();
+                    }, { once: true }); // တစ်ခါပဲ အလုပ်လုပ်မည်
+                });
+            }
+        });
+
+        // SNOWFLAKES SCRIPT
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            snowflake.innerHTML = '❄'; 
+            snowflake.style.left = Math.random() * 100 + 'vw';
+            snowflake.style.opacity = Math.random();
+            snowflake.style.fontSize = (Math.random() * 10 + 10) + 'px';
+            snowflake.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            document.body.appendChild(snowflake);
+            setTimeout(() => { snowflake.remove(); }, 5000);
+        }
+        setInterval(createSnowflake, 200);
     </script>
 </body>
 </html>
