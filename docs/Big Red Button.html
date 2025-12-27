@@ -68,7 +68,7 @@
             100% { transform: translate3d(-100%, 0, 0); }
         }
 
-        /* --- SNOWFLAKES --- */
+        /* --- SNOWFLAKES (CSS ကို မဖျက်လဲ ရပါတယ်၊ JS ပိတ်ထားရင် မပေါ်ပါဘူး) --- */
         .snowflake {
             position: fixed; top: -10px; z-index: 9999; color: #fff; user-select: none; pointer-events: none;
             text-shadow: 0 0 5px white;
@@ -114,7 +114,7 @@
 
     <div class="news-ticker">
         <div class="ticker-content">
-            <i class="fas fa-snowflake me-2"></i> SCIENCE DAILY MYANMAR • 🚀 Exploring Science & Tech • ❄️ WINTER EDITION •
+            <i class="fas fa-snowflake me-2"></i> SCIENCE DAILY MYANMAR • 🚀 Exploring Science & Tech • 🐍 UPDATED DAILY •
         </div>
     </div>
 
@@ -231,23 +231,17 @@
             else { filteredPosts.forEach(post => { let a = document.createElement("a"); a.href = post.url; a.className = "search-item"; a.innerHTML = `<div class='fw-bold'>${post.title}</div><small class='text-muted'>${post.summary.substring(0, 50)}...</small>`; resultsDiv.appendChild(a); }); }
         }
 
-        // --- SOUND EFFECT LOGIC (အသစ်ထည့်ထားသည်) ---
+        // --- SOUND EFFECT LOGIC ---
         window.addEventListener('load', function() {
             const audio = document.getElementById("startupSound");
-            audio.volume = 0.5; // အသံ အတိုးအကျယ် (0.0 to 1.0)
-
-            // Website ပွင့်တာနဲ့ အသံထွက်ဖို့ ကြိုးစားမည်
+            audio.volume = 0.5; 
             const playPromise = audio.play();
-
             if (playPromise !== undefined) {
                 playPromise.catch(error => {
-                    // Browser က Autoplay ပိတ်ထားရင် ဒီနေရာရောက်လာမယ်
                     console.log("Autoplay prevented. Waiting for interaction.");
-                    
-                    // User က Screen ကို တစ်ချက်နှိပ်လိုက်တာနဲ့ အသံထွက်မည်
                     document.addEventListener('click', () => {
                         audio.play();
-                    }, { once: true }); // တစ်ခါပဲ အလုပ်လုပ်မည်
+                    }, { once: true }); 
                 });
             }
         });
@@ -264,7 +258,9 @@
             document.body.appendChild(snowflake);
             setTimeout(() => { snowflake.remove(); }, 5000);
         }
-        setInterval(createSnowflake, 200);
+        
+        // ဒီအောက်ကလိုင်းကို // နဲ့ ပိတ်လိုက်တာပါ
+        // setInterval(createSnowflake, 200); 
     </script>
 </body>
 </html>

@@ -68,7 +68,7 @@
             100% { transform: translate3d(-100%, 0, 0); }
         }
 
-        /* --- SNOWFLAKES --- */
+        /* --- SNOWFLAKES (CSS ကို မဖျက်လဲ ရပါတယ်၊ JS ပိတ်ထားရင် မပေါ်ပါဘူး) --- */
         .snowflake {
             position: fixed; top: -10px; z-index: 9999; color: #fff; user-select: none; pointer-events: none;
             text-shadow: 0 0 5px white;
@@ -114,7 +114,7 @@
 
     <div class="news-ticker">
         <div class="ticker-content">
-            <i class="fas fa-snowflake me-2"></i> SCIENCE DAILY MYANMAR • 🚀 Exploring Science & Tech • ❄️ WINTER EDITION •
+            <i class="fas fa-snowflake me-2"></i> SCIENCE DAILY MYANMAR • 🚀 Exploring Science & Tech • 🐍 UPDATED DAILY •
         </div>
     </div>
 
@@ -149,7 +149,7 @@
         <h1 class="display-4 fw-bold text-white brand-font">LATEST <span style="color: var(--primary); text-shadow: 0 0 20px rgba(0,242,255,0.4);">ARTICLES</span></h1>
     </div>
     <div class="col-lg-4 text-lg-end d-none d-lg-block">
-        <p class="text-secondary mb-1">Total Posts: <span class="text-white fw-bold">1</span></p>
+        <p class="text-secondary mb-1">Total Posts: <span class="text-white fw-bold">2</span></p>
         <div class="h-1 bg-secondary w-100 mt-2 opacity-25" style="height: 1px;"></div>
     </div>
 </div>
@@ -159,6 +159,34 @@
     <div class="col-lg-8">
         
         <article class="glass-card p-4 mb-4 position-relative border-0" data-aos="fade-up" data-aos-delay="50">
+            <div class="d-flex align-items-center gap-3 mb-3 text-secondary" style="font-size: 0.85rem;">
+                <span class="badge bg-dark border border-secondary text-secondary rounded-pill px-3 py-2">
+                    <i class="fas fa-code me-1"></i> Tech
+                </span>
+                <span><i class="far fa-calendar me-1"></i> 2025-12-02</span>
+                <span><i class="far fa-clock me-1"></i> 1 min read</span>
+            </div>
+
+            <a href="3I-ATLAS ၏ Cryovolcanism.html" class="text-decoration-none">
+                <h2 class="h3 fw-bold text-white mb-3 hover-underline">3I-ATLAS ၏ Cryovolcanism</h2>
+            </a>
+
+            <p class="text-secondary mb-4" style="line-height: 1.7; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
+                Interstellar Object 3I/ATLAS နှင့် ပတ်သက်၍ တွေ့ရှိချက်အသစ် - 3I/ATLAS ၏ Cryovolcanism ဖြစ်စဉ်
+            </p>
+
+            <div class="d-flex align-items-center justify-content-between pt-3 border-top border-secondary border-opacity-25">
+                <div class="d-flex align-items-center gap-2">
+                    <div style="width: 30px; height: 30px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: black; font-weight: bold;">A</div>
+                    <small class="text-light">Mr Nova မှ ရေးသားသည်</small>
+                </div>
+                <a href="3I-ATLAS ၏ Cryovolcanism.html" class="text-info fw-bold text-decoration-none small">
+                    READ ARTICLE <i class="fas fa-arrow-right ms-1"></i>
+                </a>
+            </div>
+        </article>
+        
+        <article class="glass-card p-4 mb-4 position-relative border-0" data-aos="fade-up" data-aos-delay="100">
             <div class="d-flex align-items-center gap-3 mb-3 text-secondary" style="font-size: 0.85rem;">
                 <span class="badge bg-dark border border-secondary text-secondary rounded-pill px-3 py-2">
                     <i class="fas fa-code me-1"></i> Tech
@@ -275,23 +303,17 @@
             else { filteredPosts.forEach(post => { let a = document.createElement("a"); a.href = post.url; a.className = "search-item"; a.innerHTML = `<div class='fw-bold'>${post.title}</div><small class='text-muted'>${post.summary.substring(0, 50)}...</small>`; resultsDiv.appendChild(a); }); }
         }
 
-        // --- SOUND EFFECT LOGIC (အသစ်ထည့်ထားသည်) ---
+        // --- SOUND EFFECT LOGIC ---
         window.addEventListener('load', function() {
             const audio = document.getElementById("startupSound");
-            audio.volume = 0.5; // အသံ အတိုးအကျယ် (0.0 to 1.0)
-
-            // Website ပွင့်တာနဲ့ အသံထွက်ဖို့ ကြိုးစားမည်
+            audio.volume = 0.5; 
             const playPromise = audio.play();
-
             if (playPromise !== undefined) {
                 playPromise.catch(error => {
-                    // Browser က Autoplay ပိတ်ထားရင် ဒီနေရာရောက်လာမယ်
                     console.log("Autoplay prevented. Waiting for interaction.");
-                    
-                    // User က Screen ကို တစ်ချက်နှိပ်လိုက်တာနဲ့ အသံထွက်မည်
                     document.addEventListener('click', () => {
                         audio.play();
-                    }, { once: true }); // တစ်ခါပဲ အလုပ်လုပ်မည်
+                    }, { once: true }); 
                 });
             }
         });
@@ -308,7 +330,9 @@
             document.body.appendChild(snowflake);
             setTimeout(() => { snowflake.remove(); }, 5000);
         }
-        setInterval(createSnowflake, 200);
+        
+        // ဒီအောက်ကလိုင်းကို // နဲ့ ပိတ်လိုက်တာပါ
+        // setInterval(createSnowflake, 200); 
     </script>
 </body>
 </html>
