@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cambridge University ရဲ့ ဓာတ်ငွေ့ ၉၉% ကို ပြန်လည်အသုံးပြုပြီး ဟိုက်ဒရိုဂျင်လောင်စာထုတ်မယ့် နည်းပညာသစ် | Science Daily Myanmar </title>
+    
+    <meta property="og:title" content="Cambridge University ရဲ့ ဓာတ်ငွေ့ ၉၉% ကို ပြန်လည်အသုံးပြုပြီး ဟိုက်ဒရိုဂျင်လောင်စာထုတ်မယ့် နည်းပညာသစ်">
+    <meta property="og:description" content="ဟိုက်ဒရိုဂျင်လောင်စာ (Hydrogen Fuel) ဆိုတာ အနာဂတ်အတွက် အလွန်အရေးပါပေမယ့် လက်ရှိထုတ်လုပ်ပုံတွေက ကာဗွန်ထုတ်လွှတ်မှုများပြီး လေထုကို ညစ်ညမ်းစေနေပါတယ်။">
+    <meta property="og:image" content="https://sdmm.site/images/Clean Hydrogen Fuel.jpg">
+    <meta property="og:url" content="https://sdmm.site/Clean Hydrogen Fuel.html">
+    <meta property="og:type" content="article">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Noto+Sans+Myanmar:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/syntax.css">
+
+    <style>
+        :root {
+            --font-head: 'Space Grotesk', sans-serif;
+            --font-body: 'Noto Sans Myanmar', sans-serif;
+            --primary: #00f2ff;
+            --bg-dark: #050505;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-dark);
+            color: #e0e0e0;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* --- NEWS TICKER --- */
+        .news-ticker {
+            position: fixed; 
+            top: 76px;  
+            left: 0; width: 100%; height: 40px;
+            background: rgba(0, 0, 0, 0.8); 
+            border-top: 1px solid var(--primary); 
+            border-bottom: 1px solid var(--primary);
+            z-index: 990; 
+            overflow: hidden; display: flex; align-items: center;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 15px rgba(0, 242, 255, 0.2);
+        }
+        .ticker-content {
+            display: inline-block; white-space: nowrap;
+            animation: ticker 30s linear infinite;
+            padding-left: 100%; 
+            color: #fff; 
+            font-family: var(--font-head); 
+            font-weight: bold;
+            font-size: 0.95rem; 
+            letter-spacing: 1.5px;
+            text-shadow: 0 0 5px var(--primary); 
+        }
+        @keyframes ticker {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-100%, 0, 0); }
+        }
+
+        /* --- SNOWFLAKES (CSS ကို မဖျက်လဲ ရပါတယ်၊ JS ပိတ်ထားရင် မပေါ်ပါဘူး) --- */
+        .snowflake {
+            position: fixed; top: -10px; z-index: 9999; color: #fff; user-select: none; pointer-events: none;
+            text-shadow: 0 0 5px white;
+            animation-name: fall; animation-timing-function: linear; animation-iteration-count: infinite;
+        }
+        @keyframes fall { to { transform: translateY(105vh); } }
+
+        /* General Styles */
+        .ambient-glow { position: fixed; width: 600px; height: 600px; background: radial-gradient(circle, rgba(0,242,255,0.1) 0%, rgba(0,0,0,0) 70%); top: -100px; left: -100px; z-index: -1; filter: blur(80px); animation: float 10s infinite alternate; }
+        @keyframes float { 0% { transform: translate(0, 0); } 100% { transform: translate(50px, 50px); } }
+        
+        h1, h2, h3, h4, .brand-font { font-family: var(--font-head); letter-spacing: -0.5px; }
+        .glass-card { background: var(--glass-bg); border: 1px solid var(--border); border-radius: 16px; backdrop-filter: blur(10px); }
+        .content img { max-width: 100%; height: auto; border-radius: 12px; margin: 20px 0; border: 1px solid var(--border); }
+        .progress-container { position: fixed; top: 0; left: 0; width: 100%; height: 3px; z-index: 9999; background: transparent; }
+        .progress-bar { height: 3px; background: var(--primary); width: 0%; box-shadow: 0 0 10px var(--primary); }
+
+        #btn-back-to-top { position: fixed; bottom: 30px; right: 30px; display: none; z-index: 1000; background: rgba(0, 242, 255, 0.1); border: 1px solid var(--primary); color: var(--primary); width: 45px; height: 45px; border-radius: 50%; transition: 0.3s; }
+        #btn-back-to-top:hover { background: var(--primary); color: #000; transform: translateY(-5px); }
+
+        .search-modal { display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); backdrop-filter: blur(5px); }
+        .search-content { background-color: #1a1a1a; margin: 10% auto; padding: 20px; border: 1px solid var(--primary); width: 80%; max-width: 600px; border-radius: 15px; box-shadow: 0 0 30px rgba(0, 242, 255, 0.2); }
+        #searchInput { width: 100%; padding: 15px; font-size: 1.2rem; background: #000; border: 1px solid #333; color: white; border-radius: 8px; outline: none; }
+        #searchInput:focus { border-color: var(--primary); }
+        #searchResults { max-height: 300px; overflow-y: auto; margin-top: 15px; }
+        .search-item { display: block; padding: 10px; border-bottom: 1px solid #333; color: #ccc; text-decoration: none; transition: 0.2s; }
+        .search-item:hover { background: rgba(0, 242, 255, 0.1); color: var(--primary); padding-left: 15px; }
+
+        .code-wrapper { position: relative; margin: 2rem 0; }
+        .codehilite { border-radius: 10px; padding: 1.5rem; background: #111 !important; border: 1px solid #333; overflow-x: auto; }
+        .btn-copy { position: absolute; top: 10px; right: 10px; background: rgba(255,255,255,0.1); border: none; color: #ccc; font-size: 0.75rem; padding: 4px 10px; border-radius: 4px; cursor: pointer; }
+        .navbar { background: rgba(5,5,5,0.8); backdrop-filter: blur(15px); border-bottom: 1px solid var(--border); }
+    </style>
+</head>
+<body>
+
+    <div class="ambient-glow"></div>
+    <div class="progress-container"><div class="progress-bar" id="myBar"></div></div>
+
+    <audio id="startupSound">
+        <source src="https://cdn.pixabay.com/download/audio/2022/03/24/audio_c8c8a73467.mp3?filename=magical-chime-02-6234.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="news-ticker">
+        <div class="ticker-content">
+            <i class="fas fa-snowflake me-2"></i> SCIENCE DAILY MYANMAR • 🚀 Exploring Science & Tech • 🐍 UPDATED DAILY •
+        </div>
+    </div>
+
+    <div id="mySearchModal" class="search-modal">
+        <div class="search-content">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h5 class="text-white brand-font">SEARCH</h5>
+                <span class="text-secondary" style="cursor:pointer; font-size: 1.5rem;" onclick="closeSearch()">&times;</span>
+            </div>
+            <input type="text" id="searchInput" placeholder="Type to search..." onkeyup="searchFunction()">
+            <div id="searchResults"></div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg fixed-top py-3">
+        <div class="container">
+            <a class="navbar-brand fs-4 fw-bold text-white brand-font" href="index.html">
+                <i class="fa-solid fa-bolt text-info me-2"></i>Science<span style="color:var(--primary)">Daily</span>
+            </a>
+            <button class="btn btn-outline-secondary rounded-pill ms-auto px-3" onclick="openSearch()">
+                <i class="fas fa-search me-2"></i> Search
+            </button>
+        </div>
+    </nav>
+
+    <div class="container" style="margin-top: 140px; min-height: 80vh; padding-bottom: 100px;">
+        
+
+<nav aria-label="breadcrumb" class="mb-4" data-aos="fade-right">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="index.html" class="text-secondary text-decoration-none">Home</a></li>
+    <li class="breadcrumb-item active text-white" aria-current="page">Article</li>
+  </ol>
+</nav>
+
+<div class="row justify-content-center">
+    <div class="col-lg-9">
+        <article data-aos="fade-up">
+            <header class="mb-5 pb-4 border-bottom border-secondary border-opacity-50">
+                <div class="d-flex gap-3 text-secondary mb-3 small fw-bold font-monospace">
+                    <span><i class="far fa-calendar me-1"></i> 2025-12-29</span>
+                    <span><i class="far fa-clock me-1"></i> 2 min read</span>
+                </div>
+                <h1 class="display-4 fw-bold text-white mb-3 brand-font">Cambridge University ရဲ့ ဓာတ်ငွေ့ ၉၉% ကို ပြန်လည်အသုံးပြုပြီး ဟိုက်ဒရိုဂျင်လောင်စာထုတ်မယ့် နည်းပညာသစ်</h1>
+                <p class="lead text-info opacity-75">ဟိုက်ဒရိုဂျင်လောင်စာ (Hydrogen Fuel) ဆိုတာ အနာဂတ်အတွက် အလွန်အရေးပါပေမယ့် လက်ရှိထုတ်လုပ်ပုံတွေက ကာဗွန်ထုတ်လွှတ်မှုများပြီး လေထုကို ညစ်ညမ်းစေနေပါတယ်။</p>
+            </header>
+
+            <div class="content fs-5 lh-lg text-light" style="text-align: justify; color: #d1d5db;">
+                <p><img alt="Clean Hydrogen Fuel" src="images/Clean Hydrogen Fuel.jpg" />
+Cambridge University ရဲ့ ဓာတ်ငွေ့ ၉၉% ကို ပြန်လည်အသုံးပြုပြီး ဟိုက်ဒရိုဂျင်လောင်စာထုတ်မယ့် နည်းပညာသစ်</p>
+<p>ဟိုက်ဒရိုဂျင်လောင်စာ (Hydrogen Fuel) ဆိုတာ အနာဂတ်အတွက် အလွန်အရေးပါပေမယ့် လက်ရှိထုတ်လုပ်ပုံတွေက ကာဗွန်ထုတ်လွှတ်မှုများပြီး လေထုကို ညစ်ညမ်းစေနေပါတယ်။ ဒါပေမဲ့ အခုအခါမှာတော့ ကိမ်းဘရစ်တက္ကသိုလ် (Cambridge University) က သုတေသီတွေဟာ ဓာတ်ငွေ့ကို ၉၉% အထိ ပြန်လည်အသုံးပြုပြီး၊ ကာဗွန်ဒိုင်အောက်ဆိုက် လုံးဝမထွက်ဘဲ သန့်ရှင်းတဲ့ ဟိုက်ဒရိုဂျင်ထုတ်နိုင်မယ့် နည်းလမ်းကို ရှာတွေ့သွားပါပြီ ။</p>
+<p>ဒီနည်းပညာရဲ့ အဓိကသော့ချက်က "Methane Pyrolysis" လို့ခေါ်တဲ့ နည်းလမ်းဖြစ်ပါတယ်။ ရိုးရိုးရှင်းရှင်း ပြောရရင် -</p>
+<p>မီသိန်းဓာတ်ငွေ့ (Methane) ကို အပူချိန် ၁၃၀၀ ဒီဂရီစင်တီဂရိတ် (1300°C) အထိ ပေးလိုက်ပါတယ် ။ ဒီအပူချိန်မှာ မီသိန်းဓာတ်ငွေ့ဟာ "ကာဗွန် (Carbon)" နဲ့ "ဟိုက်ဒရိုဂျင် (Hydrogen)" ဆိုပြီး နှစ်ပိုင်း ကွဲထွက်သွားပါတယ် ။ ဒီနေရာမှာ နည်းနည်း ပြောချင်တာ က စာဖက်သူများ "မီးရှို့တာ (Combustion)" နဲ့ "အပူပေးဖြိုခွဲတာ (Pyrolysis)" မတူ ပါဘူး လို့ ပြောချင်ပါတယ် ခဗျ ။ အခု နည်းလမ်းက အပူပေးဖြိုခွဲတာ (Pyrolysis) တဲ့ နည်းလမ်းကို သုံးသွားတာပါ ခဗျ ။ ရလာတဲ့ ကာဗွန်က အီလက်ထရွန်နစ်ပစ္စည်းနဲ့ ဘက်ထရီတွေမှာသုံးတဲ့ တန်ဖိုးရှိ Carbon Nanotubes (CNT) ဖြစ်လာပြီး၊ ဟိုက်ဒရိုဂျင်ကတော့ သန့်ရှင်းတဲ့လောင်စာ ဖြစ်လာပါတယ် ။ </p>
+<p>အရင်တုန်းက ဒီနည်းလမ်းကို သုံးရာမှာ ဓာတ်ငွေ့ကို စက်ထဲမှာ တစ်ခါပဲ ဖြတ်စီးဆင်းစေတဲ့ (Single-pass) စနစ်ကို သုံးတော့ လေလွင့်မှုများပြီး စရိတ်ကြီးပါတယ် ။ </p>
+<p>Cambridge University အဖွဲ့ရဲ့ ထူးခြားချက်ကတော့ "Looping System" (ဓာတ်ငွေ့ကို လှည့်ပတ်စီးဆင်းစေခြင်း) ကို အသုံးပြုလိုက်တာပါပဲ ။ စက်ထဲမှာ ဓာတ်ငွေ့ကို ထပ်ခါထပ်ခါ လှည့်ပတ်ပေးလိုက်တဲ့အတွက် မီသိန်းဓာတ်ငွေ့ ၉၉% ကို အကျိုးရှိရှိ ပြန်သုံးနိုင်သွားပါတယ် ။ ဒီနည်းလမ်းကြောင့် ကာဗွန်ထွက်နှုန်း (Carbon yield) ၈ ဆကျော် ပိုကောင်းလာသလို၊ လုပ်ငန်းစဉ်တစ်ခုလုံးရဲ့ စွမ်းအင်အလေအလွင့် သက်သာမှုက အဆပေါင်း ၄၀၀ ကျော် ပိုကောင်းလာပါတယ် ။ </p>
+<p>ထပ်မံရှင်းပြချက် </p>
+<p>ဒီနည်းပညာရဲ့ အဓိကသော့ချက်က "Methane Pyrolysis" လို့ခေါ်တဲ့ နည်းလမ်းဖြစ်ပါတယ်။ ဒီနေရာမှာ လူအများစု ထင်မှားနိုင်တာတစ်ခုကို ရှင်းပြချင်ပါတယ်။ ပုံမှန် မီသိန်းဓာတ်ငွေ့ကို မီးရှို့ရင် လေထဲက အောက်ဆီဂျင်နဲ့ပေါင်းပြီး ကာဗွန်ဒိုင်အောက်ဆိုက် (CO_2) ထွက်လာစမြဲပါ။ဒါပေမဲ့ ဒီနည်းပညာမှာတော့ -မီသိန်းဓာတ်ငွေ့ (CH_4) ကို အောက်ဆီဂျင် လုံးဝမပါတဲ့ လေလုံပြွန်ချောင်းထဲထည့်ပြီး အပူချိန် ၁၃၀၀ ဒီဂရီစင်တီဂရိတ် (1300^\circ C) အထိ ပေးလိုက်ပါတယ် ။အောက်ဆီဂျင်မရှိတဲ့အတွက် ကာဗွန်ဒိုင်အောက်ဆိုက် (CO_2) လုံးဝ ဖြစ်ခွင့်မရတော့ပါဘူး ။အစားထိုးအနေနဲ့ မီသိန်းဟာ "ကာဗွန် (Carbon)" နဲ့ "ဟိုက်ဒရိုဂျင် (Hydrogen)" ဆိုပြီး သက်သက်စီ နှစ်ပိုင်းကွဲထွက်သွားပါတယ် ။ရလာတဲ့ ကာဗွန်က တန်ဖိုးရှိ Carbon Nanotubes (CNT) ဖြစ်လာပြီး၊ ဟိုက်ဒရိုဂျင်ကတော့ သန့်ရှင်းတဲ့လောင်စာ ဖြစ်လာပါတယ်  ။</p>
+<p>ဒီတွေ့ရှိချက်ကို ကမ္ဘာကျော် သိပ္ပံဂျာနယ် Nature မှာ တရားဝင် ဖော်ပြထားပြီး ဖြစ်ပါတယ် ။ လက်ရှိမှာတော့ ဓာတ်ခွဲခန်းအဆင့် (Lab-scale) မှာ အောင်မြင်စွာ စမ်းသပ်နိုင်ခဲ့တာဖြစ်ပြီး၊ စီးပွားဖြစ် စက်ရုံကြီးတွေအထိ တိုးချဲ့ထုတ်လုပ်နိုင်မယ့် အလားအလာရှိကြောင်း ကွန်ပျူတာမော်ဒယ်တွေနဲ့ တွက်ချက် အတည်ပြုထားပါတယ် ။</p>
+<p>ဒီနည်းပညာသာ တွင်တွင်ကျယ်ကျယ် ဖြစ်လာရင် -</p>
+<p>လျှပ်စစ်ကား (EV) ဘက်ထရီတွေအတွက် မရှိမဖြစ်လိုအပ်တဲ့ Carbon Nanotubes တွေကို ဈေးသက်သက်သာသာ ထုတ်လုပ်နိုင်ပါမယ် ။</p>
+<p>ကမ္ဘာကြီးပူနွေးလာမှုကို ကာကွယ်ပေးမယ့် "သန့်ရှင်းသော ဟိုက်ဒရိုဂျင်လောင်စာ" ကိုပါ ဘေးထွက်ပစ္စည်းအဖြစ် အမြောက်အမြား ရရှိလာမှာ ဖြစ်ပါတယ် ။</p>
+<p>Source: Interesting Engineering / Nature Journal</p>
+<h1>CleanEnergy #HydrogenFuel #CambridgeUniversity #ScienceNews #Innovation #CarbonNanotubes #EVBattery #Technology #BurmeseTechNews</h1>
+            </div>
+
+            <div class="mt-5 pt-4 d-flex justify-content-between border-top border-secondary border-opacity-50">
+                <a href="index.html" class="btn btn-outline-light rounded-pill px-4">
+                    <i class="fas fa-arrow-left me-2"></i> Back to Home
+                </a>
+            </div>
+        </article>
+    </div>
+</div>
+
+    </div>
+
+    <button type="button" id="btn-back-to-top"><i class="fas fa-arrow-up"></i></button>
+
+    <footer class="text-center py-5 border-top border-dark mt-5">
+        <small class="text-secondary">© 2025 TechBlog. Generated with Python.</small>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({once: true});
+
+        window.onscroll = function() {
+            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
+            document.getElementById("btn-back-to-top").style.display = (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) ? "block" : "none";
+        };
+        document.getElementById("btn-back-to-top").addEventListener("click", function(){ window.scrollTo({top: 0, behavior: 'smooth'}); });
+
+        document.querySelectorAll('.codehilite').forEach((block) => {
+            let wrapper = document.createElement('div'); wrapper.className = 'code-wrapper'; block.parentNode.insertBefore(wrapper, block); wrapper.appendChild(block);
+            let button = document.createElement('button'); button.className = 'btn-copy'; button.innerHTML = '<i class="far fa-copy"></i> Copy'; wrapper.appendChild(button);
+            button.addEventListener('click', async () => {
+                await navigator.clipboard.writeText(block.querySelector('pre').innerText);
+                button.innerHTML = '<i class="fas fa-check"></i>'; setTimeout(() => { button.innerHTML = '<i class="far fa-copy"></i> Copy'; }, 2000);
+            });
+        });
+
+        let postsData = [];
+        fetch('search.json').then(response => response.json()).then(data => { postsData = data; }).catch(error => console.log(error));
+        function openSearch() { document.getElementById("mySearchModal").style.display = "block"; document.getElementById("searchInput").focus(); }
+        function closeSearch() { document.getElementById("mySearchModal").style.display = "none"; }
+        window.onclick = function(event) { if (event.target == document.getElementById("mySearchModal")) { closeSearch(); } }
+        function searchFunction() {
+            let input = document.getElementById("searchInput").value.toLowerCase();
+            let resultsDiv = document.getElementById("searchResults"); resultsDiv.innerHTML = "";
+            if (input.length < 1) return;
+            let filteredPosts = postsData.filter(post => post.title.toLowerCase().includes(input) || post.summary.toLowerCase().includes(input));
+            if (filteredPosts.length === 0) { resultsDiv.innerHTML = "<p class='text-secondary mt-3'>No results found.</p>"; } 
+            else { filteredPosts.forEach(post => { let a = document.createElement("a"); a.href = post.url; a.className = "search-item"; a.innerHTML = `<div class='fw-bold'>${post.title}</div><small class='text-muted'>${post.summary.substring(0, 50)}...</small>`; resultsDiv.appendChild(a); }); }
+        }
+
+        // --- SOUND EFFECT LOGIC ---
+        window.addEventListener('load', function() {
+            const audio = document.getElementById("startupSound");
+            audio.volume = 0.5; 
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.log("Autoplay prevented. Waiting for interaction.");
+                    document.addEventListener('click', () => {
+                        audio.play();
+                    }, { once: true }); 
+                });
+            }
+        });
+
+        // SNOWFLAKES SCRIPT
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            snowflake.innerHTML = '❄'; 
+            snowflake.style.left = Math.random() * 100 + 'vw';
+            snowflake.style.opacity = Math.random();
+            snowflake.style.fontSize = (Math.random() * 10 + 10) + 'px';
+            snowflake.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            document.body.appendChild(snowflake);
+            setTimeout(() => { snowflake.remove(); }, 5000);
+        }
+        
+        // ဒီအောက်ကလိုင်းကို // နဲ့ ပိတ်လိုက်တာပါ
+        // setInterval(createSnowflake, 200); 
+    </script>
+</body>
+</html>
