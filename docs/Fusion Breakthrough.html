@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>နေမင်းကို ပုလင်းထဲထည့်ခြင်း - ရူပဗေဒပညာရှင်များ "မဖြစ်နိုင်ဘူး" ဟု ထင်ထားခဲ့သော စွမ်းအင်အတားအဆီးတစ်ခုကို ကျော်ဖြတ်နိုင်ခဲ့ပြီ | Science Daily Myanmar </title>
+    
+    <meta property="og:title" content="နေမင်းကို ပုလင်းထဲထည့်ခြင်း - ရူပဗေဒပညာရှင်များ "မဖြစ်နိုင်ဘူး" ဟု ထင်ထားခဲ့သော စွမ်းအင်အတားအဆီးတစ်ခုကို ကျော်ဖြတ်နိုင်ခဲ့ပြီ">
+    <meta property="og:description" content="လူသားမျိုးနွယ်၏ အကြီးမားဆုံး အိပ်မက်တစ်ခုမှာ ကောင်းကင်ယံမှ နေမင်းကြီး လောင်ကျွမ်းနေသကဲ့သို့ အကန့်အသတ်မရှိသော စွမ်းအင်မျိုးကို ကမ္ဘာမြေပေါ်တွင် ဖန်တီးယူရန် ဖြစ်သည်။">
+    <meta property="og:image" content="https://sdmm.site/images/Fusion Breakthrough.jpg">
+    <meta property="og:url" content="https://sdmm.site/Fusion Breakthrough.html">
+    <meta property="og:type" content="article">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Noto+Sans+Myanmar:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/syntax.css">
+
+    <style>
+        :root {
+            --font-head: 'Space Grotesk', sans-serif;
+            --font-body: 'Noto Sans Myanmar', sans-serif;
+            --primary: #00f2ff;
+            --bg-dark: #050505;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-dark);
+            color: #e0e0e0;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* --- NEWS TICKER --- */
+        .news-ticker {
+            position: fixed; 
+            top: 76px;  
+            left: 0; width: 100%; height: 40px;
+            background: rgba(0, 0, 0, 0.8); 
+            border-top: 1px solid var(--primary); 
+            border-bottom: 1px solid var(--primary);
+            z-index: 990; 
+            overflow: hidden; display: flex; align-items: center;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 15px rgba(0, 242, 255, 0.2);
+        }
+        .ticker-content {
+            display: inline-block; white-space: nowrap;
+            animation: ticker 30s linear infinite;
+            padding-left: 100%; 
+            color: #fff; 
+            font-family: var(--font-head); 
+            font-weight: bold;
+            font-size: 0.95rem; 
+            letter-spacing: 1.5px;
+            text-shadow: 0 0 5px var(--primary); 
+        }
+        @keyframes ticker {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-100%, 0, 0); }
+        }
+
+        /* --- SNOWFLAKES (CSS ကို မဖျက်လဲ ရပါတယ်၊ JS ပိတ်ထားရင် မပေါ်ပါဘူး) --- */
+        .snowflake {
+            position: fixed; top: -10px; z-index: 9999; color: #fff; user-select: none; pointer-events: none;
+            text-shadow: 0 0 5px white;
+            animation-name: fall; animation-timing-function: linear; animation-iteration-count: infinite;
+        }
+        @keyframes fall { to { transform: translateY(105vh); } }
+
+        /* General Styles */
+        .ambient-glow { position: fixed; width: 600px; height: 600px; background: radial-gradient(circle, rgba(0,242,255,0.1) 0%, rgba(0,0,0,0) 70%); top: -100px; left: -100px; z-index: -1; filter: blur(80px); animation: float 10s infinite alternate; }
+        @keyframes float { 0% { transform: translate(0, 0); } 100% { transform: translate(50px, 50px); } }
+        
+        h1, h2, h3, h4, .brand-font { font-family: var(--font-head); letter-spacing: -0.5px; }
+        .glass-card { background: var(--glass-bg); border: 1px solid var(--border); border-radius: 16px; backdrop-filter: blur(10px); }
+        .content img { max-width: 100%; height: auto; border-radius: 12px; margin: 20px 0; border: 1px solid var(--border); }
+        .progress-container { position: fixed; top: 0; left: 0; width: 100%; height: 3px; z-index: 9999; background: transparent; }
+        .progress-bar { height: 3px; background: var(--primary); width: 0%; box-shadow: 0 0 10px var(--primary); }
+
+        #btn-back-to-top { position: fixed; bottom: 30px; right: 30px; display: none; z-index: 1000; background: rgba(0, 242, 255, 0.1); border: 1px solid var(--primary); color: var(--primary); width: 45px; height: 45px; border-radius: 50%; transition: 0.3s; }
+        #btn-back-to-top:hover { background: var(--primary); color: #000; transform: translateY(-5px); }
+
+        .search-modal { display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); backdrop-filter: blur(5px); }
+        .search-content { background-color: #1a1a1a; margin: 10% auto; padding: 20px; border: 1px solid var(--primary); width: 80%; max-width: 600px; border-radius: 15px; box-shadow: 0 0 30px rgba(0, 242, 255, 0.2); }
+        #searchInput { width: 100%; padding: 15px; font-size: 1.2rem; background: #000; border: 1px solid #333; color: white; border-radius: 8px; outline: none; }
+        #searchInput:focus { border-color: var(--primary); }
+        #searchResults { max-height: 300px; overflow-y: auto; margin-top: 15px; }
+        .search-item { display: block; padding: 10px; border-bottom: 1px solid #333; color: #ccc; text-decoration: none; transition: 0.2s; }
+        .search-item:hover { background: rgba(0, 242, 255, 0.1); color: var(--primary); padding-left: 15px; }
+
+        .code-wrapper { position: relative; margin: 2rem 0; }
+        .codehilite { border-radius: 10px; padding: 1.5rem; background: #111 !important; border: 1px solid #333; overflow-x: auto; }
+        .btn-copy { position: absolute; top: 10px; right: 10px; background: rgba(255,255,255,0.1); border: none; color: #ccc; font-size: 0.75rem; padding: 4px 10px; border-radius: 4px; cursor: pointer; }
+        .navbar { background: rgba(5,5,5,0.8); backdrop-filter: blur(15px); border-bottom: 1px solid var(--border); }
+    </style>
+</head>
+<body>
+
+    <div class="ambient-glow"></div>
+    <div class="progress-container"><div class="progress-bar" id="myBar"></div></div>
+
+    <audio id="startupSound">
+        <source src="https://cdn.pixabay.com/download/audio/2022/03/24/audio_c8c8a73467.mp3?filename=magical-chime-02-6234.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="news-ticker">
+        <div class="ticker-content">
+            <i class="fas fa-snowflake me-2"></i> SCIENCE DAILY MYANMAR • 🚀 Exploring Science & Tech • 🐍 UPDATED DAILY •
+        </div>
+    </div>
+
+    <div id="mySearchModal" class="search-modal">
+        <div class="search-content">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h5 class="text-white brand-font">SEARCH</h5>
+                <span class="text-secondary" style="cursor:pointer; font-size: 1.5rem;" onclick="closeSearch()">&times;</span>
+            </div>
+            <input type="text" id="searchInput" placeholder="Type to search..." onkeyup="searchFunction()">
+            <div id="searchResults"></div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg fixed-top py-3">
+        <div class="container">
+            <a class="navbar-brand fs-4 fw-bold text-white brand-font" href="index.html">
+                <i class="fa-solid fa-bolt text-info me-2"></i>Science<span style="color:var(--primary)">Daily</span>
+            </a>
+            <button class="btn btn-outline-secondary rounded-pill ms-auto px-3" onclick="openSearch()">
+                <i class="fas fa-search me-2"></i> Search
+            </button>
+        </div>
+    </nav>
+
+    <div class="container" style="margin-top: 140px; min-height: 80vh; padding-bottom: 100px;">
+        
+
+<nav aria-label="breadcrumb" class="mb-4" data-aos="fade-right">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="index.html" class="text-secondary text-decoration-none">Home</a></li>
+    <li class="breadcrumb-item active text-white" aria-current="page">Article</li>
+  </ol>
+</nav>
+
+<div class="row justify-content-center">
+    <div class="col-lg-9">
+        <article data-aos="fade-up">
+            <header class="mb-5 pb-4 border-bottom border-secondary border-opacity-50">
+                <div class="d-flex gap-3 text-secondary mb-3 small fw-bold font-monospace">
+                    <span><i class="far fa-calendar me-1"></i> 2026-01-13</span>
+                    <span><i class="far fa-clock me-1"></i> 2 min read</span>
+                </div>
+                <h1 class="display-4 fw-bold text-white mb-3 brand-font">နေမင်းကို ပုလင်းထဲထည့်ခြင်း - ရူပဗေဒပညာရှင်များ "မဖြစ်နိုင်ဘူး" ဟု ထင်ထားခဲ့သော စွမ်းအင်အတားအဆီးတစ်ခုကို ကျော်ဖြတ်နိုင်ခဲ့ပြီ</h1>
+                <p class="lead text-info opacity-75">လူသားမျိုးနွယ်၏ အကြီးမားဆုံး အိပ်မက်တစ်ခုမှာ ကောင်းကင်ယံမှ နေမင်းကြီး လောင်ကျွမ်းနေသကဲ့သို့ အကန့်အသတ်မရှိသော စွမ်းအင်မျိုးကို ကမ္ဘာမြေပေါ်တွင် ဖန်တီးယူရန် ဖြစ်သည်။</p>
+            </header>
+
+            <div class="content fs-5 lh-lg text-light" style="text-align: justify; color: #d1d5db;">
+                <p><img alt="Fusion Breakthrough" src="images/Fusion Breakthrough.jpg" /></p>
+<p>နေမင်းကို ပုလင်းထဲထည့်ခြင်း - ရူပဗေဒပညာရှင်များ "မဖြစ်နိုင်ဘူး" ဟု ထင်ထားခဲ့သော စွမ်းအင်အတားအဆီးတစ်ခုကို ကျော်ဖြတ်နိုင်ခဲ့ပြီ</p>
+<p>လူသားမျိုးနွယ်၏ အကြီးမားဆုံး အိပ်မက်တစ်ခုမှာ ကောင်းကင်ယံမှ နေမင်းကြီး လောင်ကျွမ်းနေသကဲ့သို့ အကန့်အသတ်မရှိသော စွမ်းအင်မျိုးကို ကမ္ဘာမြေပေါ်တွင် ဖန်တီးယူရန် ဖြစ်သည်။ ဤအရာကို Nuclear Fusion (နူကလီးယား ပေါင်းစည်းခြင်း) ဟုခေါ်ပြီး သိပ္ပံပညာရှင်များသည် နေမင်း၏ နှလုံးသားကို Tokamak ဟုခေါ်သော သံလိုက်ဓာတ်ပေါင်းဖိုများထဲတွင် တုပဖန်တီးရန် ကြိုးစားနေခဲ့ကြသည်မှာ ကြာခဲ့ပါပြီ ။ သို့သော် ဆယ်စုနှစ်များစွာကြာအောင် သူတို့၏ လမ်းခရီးကို ပိတ်ဆို့ထားသည့် "အမြန်နှုန်း ကန့်သတ်ချက်" တစ်ခု ရှိနေခဲ့သည်။</p>
+<p>ယခုအခါတွင် တရုတ်နိုင်ငံမှ ရူပဗေဒပညာရှင်များသည် ထိုအတားအဆီးကို ကျော်ဖြတ်နိုင်မည့် နည်းလမ်းသစ်ကို ရှာဖွေတွေ့ရှိခဲ့ကြပါပြီ ။</p>
+<p>စွမ်းအင်လောက၏ "အမြန်နှုန်း ကန့်သတ်ချက်" (Greenwald Limit)</p>
+<p>Fusion စွမ်းအင်ထုတ်လုပ်ရန် အဓိကသော့ချက်မှာ Plasma Density (ပလာစမာ သိပ်သည်းဆ) ဖြစ်သည်။ ပလာစမာထဲတွင် အက်တမ်များကို များများသိပ်ထည့်နိုင်လေ၊ ပေါင်းစည်းမှုများ ပိုဖြစ်လေ၊ စွမ်းအင်ပိုထွက်လေ ဖြစ်သည် ။ သို့သော် ပြဿနာတစ်ခုရှိသည်။ Greenwald limit ဟုခေါ်သော သိပ်သည်းဆ ကန့်သတ်ချက်တစ်ခု ရှိနေခြင်းပင်ဖြစ်သည် ။</p>
+<p>ရိုးရိုးရှင်းရှင်း ပြောရလျှင် - အခန်းကျဉ်းကျဉ်းလေးထဲတွင် လူတွေ အလွန်ပြည့်ကျပ်နေအောင် ထည့်လိုက်ပါက ရုန်းရင်းဆန်ခတ်ဖြစ်ပြီး ပွဲပျက်သွားတတ်သကဲ့သို့ပင် ဖြစ်သည်။</p>
+<p>Tokamak ဓာတ်ပေါင်းဖိုများတွင် ပလာစမာသိပ်သည်းဆသည် ဤကန့်သတ်ချက်ကို ကျော်လွန်သွားပါက ပလာစမာများသည် မငြိမ်မသက်ဖြစ်ကာ ပြိုကွဲသွားလေ့ရှိပြီး ဓာတ်ပေါင်းဖိုအစိတ်အပိုင်းများကိုပင် ထိခိုက်ပျက်စီးစေနိုင်သည် ။</p>
+<p>ထို့ကြောင့် နှစ်ပေါင်းများစွာကြာအောင် အင်ဂျင်နီယာများသည် ဤ Greenwald limit ကို ကျော်လွန်၍မရသော သဘာဝနိယာမတစ်ခုအဖြစ် သတ်မှတ်ပြီး ၎င်းအောက်တွင်သာ လည်ပတ်ခဲ့ကြရသည် ။</p>
+<p>မမျှော်လင့်ထားသော အလှည့်အပြောင်း</p>
+<p>သို့သော် တရုတ်နိုင်ငံရှိ EAST (Experimental Advanced Superconducting Tokamak) ဓာတ်ပေါင်းဖိုမှ ပညာရှင်များသည် ဤအယူအဆကို ပြောင်းလဲပစ်လိုက်သည် ။ သူတို့သည် အင်အားသုံးပြီး တွန်းထိုးဝင်ရောက်ခြင်းမဟုတ်ဘဲ၊ အလွန်ပါးနပ်သော နည်းလမ်းဖြင့် "သိပ်သည်းဆ ကန့်သတ်ချက် မရှိသော နယ်ပယ်" (Density-free regime) သို့ ဝင်ရောက်နိုင်ခဲ့ကြသည် ။</p>
+<p>သိပ္ပံပညာရှင် Ping Zhu နှင့် Ning Yan တို့ ဦးဆောင်သော အဖွဲ့သည် အောက်ပါ အဆင့်မြင့်နည်းပညာများကို အသုံးပြုခဲ့ကြသည်  -</p>
+<p>Start-up Control: ဓာတ်ပေါင်းဖို စတင်လည်ပတ်ချိန်တွင် လောင်စာဓာတ်ငွေ့၏ ဖိအားကို တိကျစွာ ထိန်းချုပ်ခြင်း။</p>
+<p>Heating Burst: Electron Cyclotron Resonance Heating ဟုခေါ်သော အပူပေးစနစ်ဖြင့် ပလာစမာကို အထူးပြုပြင်ခြင်း ။</p>
+<p>ဤလုပ်ဆောင်ချက်များသည် ပလာစမာနှင့် ဓာတ်ပေါင်းဖိုနံရံတို့ ထိတွေ့ပုံကို ပြောင်းလဲစေခဲ့သည်။ ပုံမှန်အားဖြင့် သိပ်သည်းဆများလာလျှင် အပူချိန်ကျပြီး နံရံမှ အညစ်အကြေးများ (Impurities) ဝင်ရောက်ကာ ပလာစမာကို ပျက်စီးစေတတ်သည် ။ သို့သော် သူတို့၏ နည်းလမ်းသစ်သည် နံရံမှ အညစ်အကြေးများ ဝင်ရောက်မှုကို လျှော့ချပေးနိုင်ခဲ့သည် ။</p>
+<p>ရလဒ်မှာ အံ့မခန်းပါပင်။ သုတေသီများသည် ယခင်က မကျော်နိုင်ခဲ့သော Greenwald limit ထက် ၆၅ ရာခိုင်နှုန်း ပိုမိုမြင့်မားသော သိပ်သည်းဆအထိ ရောက်ရှိအောင် စွမ်းဆောင်နိုင်ခဲ့ကြသည် ။</p>
+<p>ဒါဟာ ဘာကို ဆိုလိုသလဲ။</p>
+<p>Greenwald limit သည် ရူပဗေဒ၏ မဖောက်ဖျက်နိုင်သော ဥပဒေသတစ်ခု မဟုတ်ကြောင်း သက်သေပြလိုက်ခြင်းဖြစ်သည်။</p>
+<p>အနာဂတ် Fusion ဓာတ်ပေါင်းဖိုများတွင် ပိုမိုမြင့်မားသော စွမ်းအင်များကို ဘေးကင်းစွာ ထုတ်လုပ်နိုင်မည့် လမ်းကြောင်းတစ်ခု ပွင့်သွားခြင်းဖြစ်သည်။</p>
+<p>သိပ္ပံပညာရှင် Ping Zhu က "ဒီတွေ့ရှိချက်ဟာ လက်တွေ့ကျပြီး အတိုင်းအတာချဲ့ထွင်နိုင်တဲ့ နည်းလမ်းတစ်ခုပါ" ဟု ဆိုသည် ။ ကျွန်ုပ်တို့သည် နေမင်းကို ပုလင်းထဲထည့်ရန် ခရီးလမ်းဆုံးသို့ မရောက်သေးသော်လည်း၊ ယခုအခါ ပိုမိုမြန်ဆန်သော လမ်းကြောင်းပေါ်သို့ ရောက်ရှိနေပြီဖြစ်ကြောင်း ဤစမ်းသပ်ချက်က သက်သေပြနေပါသည်။</p>
+<p>Short Sources Reference
+Core Event: Scientists at EAST tokamak (China) exceeded the Greenwald limit.
+Scientific Barrier: The Greenwald limit normally causes plasma collapse due to cooling and impurities.
+The Method: Controlled fuel pressure at startup and electron cyclotron resonance heating.</p>
+<p>စာဖတ်သူများသို့ လေးစားစွာဖြင့် အသိပေးခြင်း</p>
+<p>ဤဆောင်းပါးသည် ရှုပ်ထွေးနက်နဲသော နည်းပညာအကြောင်းအရာများကို နယ်ပယ်အသီးသီးမှ စာဖတ်သူများ အလွယ်တကူ နားလည်သဘောပေါက်စေရန် ရည်ရွယ်၍ အရိုးရှင်းဆုံး ဘာသာစကားဖြင့် ပြန်လည်ရေးသားထားခြင်း ဖြစ်ပါသည်။ ဤတင်ပြချက်တွင် မည်သည့် လူမျိုးရေး၊ ဘာသာရေး၊ သို့မဟုတ် ဘက်လိုက်မှု အစွဲအလမ်းများမှ မပါဝင်ဘဲ၊ စစ်မှန်သော အသိပညာနှင့် စာဖတ်သူများအတွက် အကျိုးကျေးဇူးကိုသာ ရှေးရှုတင်ဆက်ထားခြင်းဖြစ်ကြောင်း အသိပေးအပ်ပါသည်။</p>
+<h1>NuclearFusion #ScienceBreakthrough #CleanEnergy #EASTReactor #PhysicsNews #FutureTech #စွမ်းအင်နည်းပညာ #သိပ္ပံဗဟုသုတ</h1>
+            </div>
+
+            <div class="mt-5 pt-4 d-flex justify-content-between border-top border-secondary border-opacity-50">
+                <a href="index.html" class="btn btn-outline-light rounded-pill px-4">
+                    <i class="fas fa-arrow-left me-2"></i> Back to Home
+                </a>
+            </div>
+        </article>
+    </div>
+</div>
+
+    </div>
+
+    <button type="button" id="btn-back-to-top"><i class="fas fa-arrow-up"></i></button>
+
+    <footer class="text-center py-5 border-top border-dark mt-5">
+        <small class="text-secondary">© 2025 TechBlog. Generated with Python.</small>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({once: true});
+
+        window.onscroll = function() {
+            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
+            document.getElementById("btn-back-to-top").style.display = (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) ? "block" : "none";
+        };
+        document.getElementById("btn-back-to-top").addEventListener("click", function(){ window.scrollTo({top: 0, behavior: 'smooth'}); });
+
+        document.querySelectorAll('.codehilite').forEach((block) => {
+            let wrapper = document.createElement('div'); wrapper.className = 'code-wrapper'; block.parentNode.insertBefore(wrapper, block); wrapper.appendChild(block);
+            let button = document.createElement('button'); button.className = 'btn-copy'; button.innerHTML = '<i class="far fa-copy"></i> Copy'; wrapper.appendChild(button);
+            button.addEventListener('click', async () => {
+                await navigator.clipboard.writeText(block.querySelector('pre').innerText);
+                button.innerHTML = '<i class="fas fa-check"></i>'; setTimeout(() => { button.innerHTML = '<i class="far fa-copy"></i> Copy'; }, 2000);
+            });
+        });
+
+        let postsData = [];
+        fetch('search.json').then(response => response.json()).then(data => { postsData = data; }).catch(error => console.log(error));
+        function openSearch() { document.getElementById("mySearchModal").style.display = "block"; document.getElementById("searchInput").focus(); }
+        function closeSearch() { document.getElementById("mySearchModal").style.display = "none"; }
+        window.onclick = function(event) { if (event.target == document.getElementById("mySearchModal")) { closeSearch(); } }
+        function searchFunction() {
+            let input = document.getElementById("searchInput").value.toLowerCase();
+            let resultsDiv = document.getElementById("searchResults"); resultsDiv.innerHTML = "";
+            if (input.length < 1) return;
+            let filteredPosts = postsData.filter(post => post.title.toLowerCase().includes(input) || post.summary.toLowerCase().includes(input));
+            if (filteredPosts.length === 0) { resultsDiv.innerHTML = "<p class='text-secondary mt-3'>No results found.</p>"; } 
+            else { filteredPosts.forEach(post => { let a = document.createElement("a"); a.href = post.url; a.className = "search-item"; a.innerHTML = `<div class='fw-bold'>${post.title}</div><small class='text-muted'>${post.summary.substring(0, 50)}...</small>`; resultsDiv.appendChild(a); }); }
+        }
+
+        // --- SOUND EFFECT LOGIC ---
+        window.addEventListener('load', function() {
+            const audio = document.getElementById("startupSound");
+            audio.volume = 0.5; 
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.log("Autoplay prevented. Waiting for interaction.");
+                    document.addEventListener('click', () => {
+                        audio.play();
+                    }, { once: true }); 
+                });
+            }
+        });
+
+        // SNOWFLAKES SCRIPT
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            snowflake.innerHTML = '❄'; 
+            snowflake.style.left = Math.random() * 100 + 'vw';
+            snowflake.style.opacity = Math.random();
+            snowflake.style.fontSize = (Math.random() * 10 + 10) + 'px';
+            snowflake.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            document.body.appendChild(snowflake);
+            setTimeout(() => { snowflake.remove(); }, 5000);
+        }
+        
+        // ဒီအောက်ကလိုင်းကို // နဲ့ ပိတ်လိုက်တာပါ
+        // setInterval(createSnowflake, 200); 
+    </script>
+</body>
+</html>
