@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Physics ဆိုတာ ဘာလဲ? အရိုးရှင်းဆုံး ရှင်းပြချက် | Science Daily Myanmar </title>
+    
+    <meta property="og:title" content="Quantum Physics ဆိုတာ ဘာလဲ? အရိုးရှင်းဆုံး ရှင်းပြချက်">
+    <meta property="og:description" content="သာမန်ရူပဗေဒ (Classical Physics) မှာတော့ ဘောလုံးတစ်လုံးကို ကန်လိုက်ရင် ဘယ်နားရောက်မလဲဆိုတာ တိတိကျကျ တွက်ချက်လို့ရပါတယ်။">
+    <meta property="og:image" content="https://sdmm.site/images/Reality is a Lie.jpg">
+    <meta property="og:url" content="https://sdmm.site/Reality is a Lie.html">
+    <meta property="og:type" content="article">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Noto+Sans+Myanmar:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/syntax.css">
+
+    <style>
+        :root {
+            --font-head: 'Space Grotesk', sans-serif;
+            --font-body: 'Noto Sans Myanmar', sans-serif;
+            --primary: #00f2ff;
+            --bg-dark: #050505;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-dark);
+            color: #e0e0e0;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* --- NEWS TICKER --- */
+        .news-ticker {
+            position: fixed; 
+            top: 76px;  
+            left: 0; width: 100%; height: 40px;
+            background: rgba(0, 0, 0, 0.8); 
+            border-top: 1px solid var(--primary); 
+            border-bottom: 1px solid var(--primary);
+            z-index: 990; 
+            overflow: hidden; display: flex; align-items: center;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 15px rgba(0, 242, 255, 0.2);
+        }
+        .ticker-content {
+            display: inline-block; white-space: nowrap;
+            animation: ticker 30s linear infinite;
+            padding-left: 100%; 
+            color: #fff; 
+            font-family: var(--font-head); 
+            font-weight: bold;
+            font-size: 0.95rem; 
+            letter-spacing: 1.5px;
+            text-shadow: 0 0 5px var(--primary); 
+        }
+        @keyframes ticker {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-100%, 0, 0); }
+        }
+
+        /* --- SNOWFLAKES (CSS ကို မဖျက်လဲ ရပါတယ်၊ JS ပိတ်ထားရင် မပေါ်ပါဘူး) --- */
+        .snowflake {
+            position: fixed; top: -10px; z-index: 9999; color: #fff; user-select: none; pointer-events: none;
+            text-shadow: 0 0 5px white;
+            animation-name: fall; animation-timing-function: linear; animation-iteration-count: infinite;
+        }
+        @keyframes fall { to { transform: translateY(105vh); } }
+
+        /* General Styles */
+        .ambient-glow { position: fixed; width: 600px; height: 600px; background: radial-gradient(circle, rgba(0,242,255,0.1) 0%, rgba(0,0,0,0) 70%); top: -100px; left: -100px; z-index: -1; filter: blur(80px); animation: float 10s infinite alternate; }
+        @keyframes float { 0% { transform: translate(0, 0); } 100% { transform: translate(50px, 50px); } }
+        
+        h1, h2, h3, h4, .brand-font { font-family: var(--font-head); letter-spacing: -0.5px; }
+        .glass-card { background: var(--glass-bg); border: 1px solid var(--border); border-radius: 16px; backdrop-filter: blur(10px); }
+        .content img { max-width: 100%; height: auto; border-radius: 12px; margin: 20px 0; border: 1px solid var(--border); }
+        .progress-container { position: fixed; top: 0; left: 0; width: 100%; height: 3px; z-index: 9999; background: transparent; }
+        .progress-bar { height: 3px; background: var(--primary); width: 0%; box-shadow: 0 0 10px var(--primary); }
+
+        #btn-back-to-top { position: fixed; bottom: 30px; right: 30px; display: none; z-index: 1000; background: rgba(0, 242, 255, 0.1); border: 1px solid var(--primary); color: var(--primary); width: 45px; height: 45px; border-radius: 50%; transition: 0.3s; }
+        #btn-back-to-top:hover { background: var(--primary); color: #000; transform: translateY(-5px); }
+
+        .search-modal { display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); backdrop-filter: blur(5px); }
+        .search-content { background-color: #1a1a1a; margin: 10% auto; padding: 20px; border: 1px solid var(--primary); width: 80%; max-width: 600px; border-radius: 15px; box-shadow: 0 0 30px rgba(0, 242, 255, 0.2); }
+        #searchInput { width: 100%; padding: 15px; font-size: 1.2rem; background: #000; border: 1px solid #333; color: white; border-radius: 8px; outline: none; }
+        #searchInput:focus { border-color: var(--primary); }
+        #searchResults { max-height: 300px; overflow-y: auto; margin-top: 15px; }
+        .search-item { display: block; padding: 10px; border-bottom: 1px solid #333; color: #ccc; text-decoration: none; transition: 0.2s; }
+        .search-item:hover { background: rgba(0, 242, 255, 0.1); color: var(--primary); padding-left: 15px; }
+
+        .code-wrapper { position: relative; margin: 2rem 0; }
+        .codehilite { border-radius: 10px; padding: 1.5rem; background: #111 !important; border: 1px solid #333; overflow-x: auto; }
+        .btn-copy { position: absolute; top: 10px; right: 10px; background: rgba(255,255,255,0.1); border: none; color: #ccc; font-size: 0.75rem; padding: 4px 10px; border-radius: 4px; cursor: pointer; }
+        .navbar { background: rgba(5,5,5,0.8); backdrop-filter: blur(15px); border-bottom: 1px solid var(--border); }
+    </style>
+</head>
+<body>
+
+    <div class="ambient-glow"></div>
+    <div class="progress-container"><div class="progress-bar" id="myBar"></div></div>
+
+    <audio id="startupSound">
+        <source src="https://cdn.pixabay.com/download/audio/2022/03/24/audio_c8c8a73467.mp3?filename=magical-chime-02-6234.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="news-ticker">
+        <div class="ticker-content">
+            <i class="fas fa-snowflake me-2"></i> SCIENCE DAILY MYANMAR • 🚀 Exploring Science & Tech • 🐍 UPDATED DAILY •
+        </div>
+    </div>
+
+    <div id="mySearchModal" class="search-modal">
+        <div class="search-content">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h5 class="text-white brand-font">SEARCH</h5>
+                <span class="text-secondary" style="cursor:pointer; font-size: 1.5rem;" onclick="closeSearch()">&times;</span>
+            </div>
+            <input type="text" id="searchInput" placeholder="Type to search..." onkeyup="searchFunction()">
+            <div id="searchResults"></div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg fixed-top py-3">
+        <div class="container">
+            <a class="navbar-brand fs-4 fw-bold text-white brand-font" href="index.html">
+                <i class="fa-solid fa-bolt text-info me-2"></i>Science<span style="color:var(--primary)">Daily</span>
+            </a>
+            <button class="btn btn-outline-secondary rounded-pill ms-auto px-3" onclick="openSearch()">
+                <i class="fas fa-search me-2"></i> Search
+            </button>
+        </div>
+    </nav>
+
+    <div class="container" style="margin-top: 140px; min-height: 80vh; padding-bottom: 100px;">
+        
+
+<nav aria-label="breadcrumb" class="mb-4" data-aos="fade-right">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="index.html" class="text-secondary text-decoration-none">Home</a></li>
+    <li class="breadcrumb-item active text-white" aria-current="page">Article</li>
+  </ol>
+</nav>
+
+<div class="row justify-content-center">
+    <div class="col-lg-9">
+        <article data-aos="fade-up">
+            <header class="mb-5 pb-4 border-bottom border-secondary border-opacity-50">
+                <div class="d-flex gap-3 text-secondary mb-3 small fw-bold font-monospace">
+                    <span><i class="far fa-calendar me-1"></i> 2026-01-16</span>
+                    <span><i class="far fa-clock me-1"></i> 2 min read</span>
+                </div>
+                <h1 class="display-4 fw-bold text-white mb-3 brand-font">Quantum Physics ဆိုတာ ဘာလဲ? အရိုးရှင်းဆုံး ရှင်းပြချက်</h1>
+                <p class="lead text-info opacity-75">သာမန်ရူပဗေဒ (Classical Physics) မှာတော့ ဘောလုံးတစ်လုံးကို ကန်လိုက်ရင် ဘယ်နားရောက်မလဲဆိုတာ တိတိကျကျ တွက်ချက်လို့ရပါတယ်။</p>
+            </header>
+
+            <div class="content fs-5 lh-lg text-light" style="text-align: justify; color: #d1d5db;">
+                <p><img alt="Reality is a Lie" src="images/Reality is a Lie.jpg" /></p>
+<p>Quantum Physics ဆိုတာ ဘာလဲ? အရိုးရှင်းဆုံး ရှင်းပြချက်</p>
+<p>သာမန်ရူပဗေဒ (Classical Physics) မှာတော့ ဘောလုံးတစ်လုံးကို ကန်လိုက်ရင် ဘယ်နားရောက်မလဲဆိုတာ တိတိကျကျ တွက်ချက်လို့ရပါတယ်။ ဒါပေမဲ့ အရာဝတ္ထုတွေကို အသေးဆုံးဖြိုခွဲလိုက်တဲ့အခါ (Atom အဆင့်ထက်ကျော်လွန်သွားတဲ့အခါ) ကျွန်တော်တို့ သိထားတဲ့ စည်းမျဉ်းတွေအားလုံး ပျက်စီးသွားပါတယ်။ အဲ့ဒီ "မှော်ဆန်တဲ့ ကမ္ဘာ" ကို Quantum Physics လို့ ခေါ်ပါတယ်။</p>
+<p>💭 စိတ်ကူးကြည့်ရအောင် (The "Spinning Coin" Analogy)</p>
+<p>Quantum Physics ရဲ့ အထူးဆန်းဆုံး သဘောတရားကို နားလည်ဖို့အတွက် အကြွေစေ့ တစ်စေ့ကို စိတ်ကူးကြည့်ပါ။</p>
+<p>အကြွေစေ့ကို စားပွဲပေါ် တင်ထားရင် ခေါင်း (Head) ဖြစ်ရင်ဖြစ်မယ်၊ ပန်း (Tail) ဖြစ်ရင်ဖြစ်မယ်။ တစ်ခုခုပါပဲ။ ဒါက သာမန်လောကပါ။</p>
+<p>ဒါပေမဲ့ အကြွေစေ့ကို ဂျင်တစ်ခုလို လည်လိုက်ရင်ရော? လည်နေတဲ့အချိန်မှာ အဲ့ဒီအကြွေစေ့ဟာ "ခေါင်း" လား? "ပန်း" လား? အဖြေကတော့ "နှစ်ခုလုံး ဖြစ်နေတယ်" ပါ။ လည်နေသမျှ ကာလပတ်လုံး သူဟာ ခေါင်းရော၊ ပန်းရော ဖြစ်တည်နေပါတယ်။ ဒါက မျက်စိထဲမြင်အောင် အကြွေစေ့ ဥပမာနဲ့ ရှင်းပြခြင်း ဖြစ်ပါတယ်နော်။ ပိုရှင်းသွားအောင် Quantum ကမ္ဘာက အကြွေစေ့လို့သဘောထားပြီးတော့လည်း စိတ်ကူးကြည့်နိုင်ပါတယ်။</p>
+<p>Quantum လောကမှာ အမှုန်လေးတွေ (Particles) က အဲ့ဒီလိုပါပဲ။ သူတို့ဟာ နေရာတစ်နေရာတည်းမှာ ရှိမနေပါဘူး။ နေရာအနှံ့မှာ "တပြိုင်နက်တည်း" ရှိနေနိုင်ပါတယ်။ ဒါကို Superposition လို့ခေါ်ပါတယ်။</p>
+<p>🧠 သိပ္ပံရှုထောင့် (The Hard Truth)</p>
+<p>ဒါဆိုရင် ဘယ်အချိန်မှာ "ခေါင်း" သို့မဟုတ် "ပန်း" ဆိုပြီး အဖြေထွက်သွားတာလဲ? အဖြေက... "ခင်ဗျား ကြည့်လိုက်တဲ့ အချိန်" မှာပါ။</p>
+<p>ဟုတ်ပါတယ်။ ခင်ဗျား လည်နေတဲ့ အကြွေစေ့ကို လက်နဲ့အုပ်ပြီး ကြည့်လိုက်တဲ့အချိန်ကျမှသာ အဖြေတစ်ခု ထွက်လာတာပါ။ Quantum Physics မှာ ဒါကို The Observer Effect လို့ခေါ်ပါတယ်။</p>
+<p>သိပ္ပံပညာရှင်တွေ တွေ့ရှိခဲ့တာကတော့ အီလက်ထရွန် (Electron) လို အမှုန်တွေဟာ လူတွေ "စောင့်ကြည့်မနေတဲ့အချိန်" မှာ လှိုင်းသဘောဆောင်ပြီး နေရာအနှံ့မှာ ရှိနေတတ်ပေမဲ့၊ လူတွေ (သို့မဟုတ် စက်ကိရိယာနဲ့) "တိုင်းတာလိုက်တဲ့အချိန်" မှာတော့ အမှုန်အဖြစ် ပြောင်းလဲပြီး နေရာတစ်နေရာတည်းမှာ ငြိမ်သက်သွားပါတယ်။</p>
+<p>ဆိုလိုတာက... စောင့်ကြည့်သူ (Observer) မရှိရင်၊ ဖြစ်ရပ်မှန် (Reality) ဆိုတာ သေချာရေရာမှု မရှိပါဘူး။</p>
+<p>🤔 ဒဿနရှုထောင့် (The Philosophical Wonder)</p>
+<p>ဒီအချက်က ကျွန်တော်တို့ကို အရမ်းနက်ရှိုင်းတဲ့ မေးခွန်းတွေ မေးလာစေပါတယ်။</p>
+<p>"ငါတို့ နောက်ကျောဘက်က လောကကြီးက ငါတို့ လှည့်မကြည့်သရွေ့ တကယ်ရော တည်ရှိနေရဲ့လား? ဒါမှမဟုတ် စွမ်းအင်လှိုင်းတွေအဖြစ်ပဲ ရှိနေတာလား?"</p>
+<p>Einstein ကိုယ်တိုင်ကတောင် "ငါ မကြည့်နေတဲ့အချိန်မှာ လမင်းကြီး ရှိမနေဘူးဆိုတာမျိုးတော့ ငါလက်မခံနိုင်ဘူး" လို့ ငြင်းခဲ့ဖူးပါတယ်။ သူက Classical Physics သဘောတရား အနေနဲ့ သူတွေးပြီးပြောတာပါ။</p>
+<p>ဒါပေမဲ့ Quantum သဘောတရားအရဆိုရင်တော့... ကျွန်တော်တို့ရဲ့ "သိစိတ် (Consciousness)" က လောကကြီးကို ပုံဖော်နေတာ ဖြစ်ကောင်းဖြစ်နိုင်ပါတယ်။ ခင်ဗျားရဲ့ စိတ်က ခင်ဗျားရဲ့ လက်တွေ့ဘဝကို ဖန်တီးနေတာပါ။</p>
+<p>နိဂုံး (Conclusion)</p>
+<p>မိတ်ဆွေ... Quantum Physics ဆိုတာ ရှုပ်ထွေးပေမဲ့ အရမ်းလှပပါတယ်။ ဒီလောကကြီးက ကျွန်တော်တို့ ထင်ထားသလောက် မာကျောခိုင်ခံ့တဲ့ အရာကြီး မဟုတ်ပါဘူး။ ဖြစ်နိုင်ချေတွေ (Probabilities) နဲ့ ဖွဲ့စည်းထားတဲ့ ပြောင်းလဲလွယ်တဲ့ နေရာတစ်ခုပါ။</p>
+<p>ဒါကြောင့် နောက်တစ်ခါ ခင်ဗျားရဲ့ လက်ဖဝါးကို သေချာကြည့်မိတဲ့အခါ... ဒါဟာ အသားနဲ့ အရိုးတင် မဟုတ်ဘဲ၊ ခင်ဗျား ကြည့်လိုက်လို့သာ ခိုင်မာသွားတဲ့ စွမ်းအင်အမှုန်အမွှားလေးတွေဖြစ်နေမလား ဆိုတာ သတိရလိုက်ပါ။</p>
+<p>လောကကြီးက ဆန်းကြယ်တယ်နော်... မိတ်ဆွေ။</p>
+<p>Author's Note: ဤဆောင်းပါးသည် Quantum Physics ၏ အခြေခံသဘောတရားကို သာမန်ပြည်သူများ နားလည်လွယ်စေရန် ရိုးရှင်းသော ဥပမာများဖြင့် တင်ပြထားခြင်း ဖြစ်သည်။ သိပ္ပံဆိုင်ရာ အသေးစိတ် အချက်အလက်များအတွက် သက်ဆိုင်ရာ စာတမ်းများကို ဆက်လက် လေ့လာနိုင်ပါသည်။</p>
+<p>ဒီဆောင်းပါးမှာ ဖော်ပြခဲ့တာတွေဟာ Quantum Physics ဆိုတဲ့ မဟာသမုဒ္ဒရာကြီးရဲ့ ရေတစ်စက်စာမျှသာ ရှိပါသေးတယ်။ မိတ်ဆွေအနေနဲ့ ဒီထက်ပိုပြီး နက်နက်နဲနဲ စီးမျောချင်တယ်ဆိုရင်တော့ အောက်ပါ အကြောင်းအရာတွေကို ဆက်လက် ရှာဖွေဖတ်ရှုဖို့ အကြံပြုလိုပါတယ်။</p>
+<p>Quantum Entanglement: အဝေးရောက် ဆက်နွှယ်မှု။ 
+Schrödinger's Cat: ကြောင်သေ၊ ကြောင်ရှင် ပုစ္ဆာ။
+Quantum Computing: ကွမ်တမ် ကွန်ပျူတာ နည်းပညာ။</p>
+<h1>QuantumPhysics #ScienceInBurmese #Philosophy #DeepTech #MyanmarTech #KnowledgeSharing #RealityCheck #UniverseMysteries</h1>
+            </div>
+
+            <div class="mt-5 pt-4 d-flex justify-content-between border-top border-secondary border-opacity-50">
+                <a href="index.html" class="btn btn-outline-light rounded-pill px-4">
+                    <i class="fas fa-arrow-left me-2"></i> Back to Home
+                </a>
+            </div>
+        </article>
+    </div>
+</div>
+
+    </div>
+
+    <button type="button" id="btn-back-to-top"><i class="fas fa-arrow-up"></i></button>
+
+    <footer class="text-center py-5 border-top border-dark mt-5">
+        <small class="text-secondary">© 2025 TechBlog. Generated with Python.</small>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({once: true});
+
+        window.onscroll = function() {
+            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
+            document.getElementById("btn-back-to-top").style.display = (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) ? "block" : "none";
+        };
+        document.getElementById("btn-back-to-top").addEventListener("click", function(){ window.scrollTo({top: 0, behavior: 'smooth'}); });
+
+        document.querySelectorAll('.codehilite').forEach((block) => {
+            let wrapper = document.createElement('div'); wrapper.className = 'code-wrapper'; block.parentNode.insertBefore(wrapper, block); wrapper.appendChild(block);
+            let button = document.createElement('button'); button.className = 'btn-copy'; button.innerHTML = '<i class="far fa-copy"></i> Copy'; wrapper.appendChild(button);
+            button.addEventListener('click', async () => {
+                await navigator.clipboard.writeText(block.querySelector('pre').innerText);
+                button.innerHTML = '<i class="fas fa-check"></i>'; setTimeout(() => { button.innerHTML = '<i class="far fa-copy"></i> Copy'; }, 2000);
+            });
+        });
+
+        let postsData = [];
+        fetch('search.json').then(response => response.json()).then(data => { postsData = data; }).catch(error => console.log(error));
+        function openSearch() { document.getElementById("mySearchModal").style.display = "block"; document.getElementById("searchInput").focus(); }
+        function closeSearch() { document.getElementById("mySearchModal").style.display = "none"; }
+        window.onclick = function(event) { if (event.target == document.getElementById("mySearchModal")) { closeSearch(); } }
+        function searchFunction() {
+            let input = document.getElementById("searchInput").value.toLowerCase();
+            let resultsDiv = document.getElementById("searchResults"); resultsDiv.innerHTML = "";
+            if (input.length < 1) return;
+            let filteredPosts = postsData.filter(post => post.title.toLowerCase().includes(input) || post.summary.toLowerCase().includes(input));
+            if (filteredPosts.length === 0) { resultsDiv.innerHTML = "<p class='text-secondary mt-3'>No results found.</p>"; } 
+            else { filteredPosts.forEach(post => { let a = document.createElement("a"); a.href = post.url; a.className = "search-item"; a.innerHTML = `<div class='fw-bold'>${post.title}</div><small class='text-muted'>${post.summary.substring(0, 50)}...</small>`; resultsDiv.appendChild(a); }); }
+        }
+
+        // --- SOUND EFFECT LOGIC ---
+        window.addEventListener('load', function() {
+            const audio = document.getElementById("startupSound");
+            audio.volume = 0.5; 
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.log("Autoplay prevented. Waiting for interaction.");
+                    document.addEventListener('click', () => {
+                        audio.play();
+                    }, { once: true }); 
+                });
+            }
+        });
+
+        // SNOWFLAKES SCRIPT
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            snowflake.innerHTML = '❄'; 
+            snowflake.style.left = Math.random() * 100 + 'vw';
+            snowflake.style.opacity = Math.random();
+            snowflake.style.fontSize = (Math.random() * 10 + 10) + 'px';
+            snowflake.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            document.body.appendChild(snowflake);
+            setTimeout(() => { snowflake.remove(); }, 5000);
+        }
+        
+        // ဒီအောက်ကလိုင်းကို // နဲ့ ပိတ်လိုက်တာပါ
+        // setInterval(createSnowflake, 200); 
+    </script>
+</body>
+</html>
